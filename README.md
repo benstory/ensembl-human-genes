@@ -20,6 +20,12 @@ The pages are plain static HTML. You can open them from a shared drive, put them
 
 ---
 
+**[▶ Live demo](https://benstory.github.io/ensembl-human-genes/)** – example pages for BRCA2 and TP53
+
+![Example page: NF1 view with gnomAD variants](docs/example.png)
+
+---
+
 ## Contents
 
 - [What you get](#what-you-get)
@@ -253,12 +259,6 @@ source("make_index.R"); make_simple_index("out")
 ```
 
 `make_mane_pages()` accepts the GTF as an `rtracklayer` import, a `GRanges`, a raw 9-column data frame or `read_gtf_simple()` output. The FASTA can be a `DNAStringSet`, an `FaFile` or a named character vector. Variants can be a data frame, a `VariantAnnotation` VCF or a `vcfR` object.
-
----
-
-**[▶ Live demo](https://benstory.github.io/ensembl-human-genes/)** – example pages for BRCA2 and TP53
-
-![Example page: NF1 view with gnomAD variants](docs/example.png)
 
 ---
 
