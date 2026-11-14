@@ -1,0 +1,903 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SRSF2 &ndash; ENST00000359995.10 &ndash; NM_001195427.2</title>
+<style>
+:root{--ink:#1d2733;--muted:#5d6b7a;--line:#d9dee4;--panel:#f4f6f8;--head:#24435f;--stripe:#eef0f2;
+--exon2:#1044ee;--utr:#ffdf33;--codon:#fff9af;--pep:#dd0000;--fl:#008000;--ux:#cd6839;--cx:#1044ee;--in:#8a8a8a}
+*{box-sizing:border-box}
+body{margin:0;font:14px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:#fff}
+header.top{background:var(--head);color:#fff;padding:10px 20px;display:flex;gap:16px;align-items:baseline;flex-wrap:wrap}
+header.top a{color:#cfe0f2;text-decoration:none;font-size:13px}
+header.top h1{font-size:18px;margin:0;font-weight:600}
+main{padding:16px 20px 40px;max-width:1400px}
+.summary{display:grid;grid-template-columns:max-content 1fr;gap:6px 18px;background:var(--panel);border:1px solid var(--line);padding:12px 16px;border-radius:4px}
+.summary dt{font-weight:600;color:var(--muted)}
+.summary dd{margin:0}
+a.ext{color:#1864ab;text-decoration:none;border-bottom:1px dotted #1864ab}
+a.ext:hover{border-bottom-style:solid}
+a.ext::after{content:"\2197";font-size:.8em;margin-left:2px;opacity:.7}
+.badge{display:inline-block;padding:1px 8px;margin:0 4px 2px 0;border-radius:3px;font-size:12px;background:#e3e8ee;color:#33414f}
+.badge.mane{background:#24435f;color:#fff}
+.varbar{display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center;margin-top:10px;font-size:13px;padding:8px 14px;border:1px solid var(--line);border-radius:4px}
+.varbar b{color:var(--muted)}
+.varbar select{font:inherit;font-size:13px;padding:2px 4px}
+.vsw{font-family:Menlo,Consolas,"Courier New",monospace;font-size:11px;padding:1px 5px;border-radius:2px;text-decoration:underline dotted 1.5px;white-space:nowrap}
+.vlegend{display:inline-flex;flex-wrap:wrap;gap:3px;align-items:center}
+.varbar.off .vlegend,.varbar.off .vfilter{opacity:.45}
+nav.tabs{margin:18px 0 0;display:flex;gap:4px;border-bottom:2px solid var(--head)}
+nav.tabs button{font:inherit;border:1px solid var(--line);border-bottom:none;background:var(--panel);padding:7px 16px;cursor:pointer;border-radius:4px 4px 0 0;color:var(--ink)}
+nav.tabs button[aria-selected=true]{background:var(--head);color:#fff;border-color:var(--head)}
+section.view{display:none;padding-top:12px}
+section.view.on{display:block}
+.toolbar{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;margin:4px 0 12px}
+.toolbar button{font:inherit;font-size:13px;padding:4px 10px;border:1px solid #9aa8b6;background:#fff;border-radius:3px;cursor:pointer}
+.toolbar .dl button{margin-right:4px}
+.toolbar button:hover{background:var(--panel)}
+.key{display:grid;grid-template-columns:max-content 1fr;gap:6px 14px;font-size:13px;background:var(--panel);border:1px solid var(--line);padding:10px 14px;border-radius:4px;margin-bottom:12px;max-width:820px}
+.key b{color:var(--muted);font-weight:600}
+.key label{margin-right:14px;cursor:pointer;white-space:nowrap}
+.key select{font:inherit;font-size:13px;padding:1px 4px}
+.sw{display:inline-block;padding:0 6px;font-family:Menlo,Consolas,"Courier New",monospace;font-size:12px;border:1px solid var(--line)}
+pre.seq{font:12.5px/1.35 Menlo,Consolas,"DejaVu Sans Mono","Courier New",monospace;margin:0;white-space:pre}
+.cdna{overflow-x:auto;padding:4px 0}
+.x1{color:var(--exon2)}
+.u{background:var(--utr)}
+.c1{background:var(--codon)}
+.pep{color:var(--pep)}
+.cdna.no-exons .x1{color:inherit}
+.cdna.no-utr .u{background:none}
+.cdna.no-codons .c1{background:none}
+.cdna.no-trans .cdsl,.cdna.no-trans .pepl{display:none}
+.prot{overflow-x:auto;padding:4px 0}
+.so{color:#e00000}
+.prot.no-exons .x1{color:inherit}
+.prot.no-so .so{color:inherit}
+.no-lnum .lnum{display:none}
+.build{display:inline-block;background:#1864ab;color:#fff;font-weight:700;font-size:12px;border-radius:3px;padding:1px 8px;margin-left:6px;letter-spacing:.02em;vertical-align:1px}
+header.top .build{background:#fff;color:var(--head)}
+.strand-badge{display:inline-block;background:#fff3bf;color:#7a5b00;border:1px solid #f0d36b;font-size:12px;font-weight:600;border-radius:3px;padding:0 7px;margin-left:4px}
+.nochr{color:#8a1c1c;font-size:12.5px;font-weight:600}
+.verwarn{margin-top:10px;padding:10px 14px;border:2px solid #e8b10c;background:#fff9db;color:#5c4300;border-radius:4px;font-size:13.5px}
+.badge.old{background:#fff3bf;color:#6b4e00;border:1px solid #e8b10c;font-weight:600}
+.refwarn{margin-top:10px;padding:8px 14px;border:1px solid #f1aeb5;background:#fff5f5;color:#8a1c1c;border-radius:4px;font-size:13px}
+footer.prov{margin-top:28px;padding-top:8px;border-top:1px solid var(--line);color:var(--muted);font-size:11.5px}
+.info-i{display:inline-block;width:14px;height:14px;line-height:14px;text-align:center;border-radius:50%;background:#9aa8b6;color:#fff;font-size:10px;font-weight:700;font-style:italic;cursor:help}
+form.goto{display:inline-flex;gap:4px;align-items:center}
+form.goto input{font:13px Menlo,Consolas,"Courier New",monospace;padding:4px 8px;border:1px solid #9aa8b6;border-radius:3px;width:330px}
+form.goto .gmsg{font-size:12px;color:#c92a2a;margin-left:4px}
+#pickbar .warns{margin-top:4px;font-size:12.5px;color:#c92a2a;gap:4px 14px}
+#pickbar .warns:empty{display:none}
+#pickbar .warns .n{color:var(--muted)}
+.chip{display:inline-flex;align-items:stretch;border:1px solid #c9d1da;background:#fff;border-radius:4px;margin:1px 4px 1px 0;font-size:12.5px;white-space:nowrap;overflow:hidden;vertical-align:middle}
+.chip .k{background:#e6ebf0;color:#4a5866;font-size:11.5px;font-weight:600;padding:1px 7px;border-right:1px solid #c9d1da}
+.chip .v{padding:1px 8px;font-variant-numeric:tabular-nums}
+.chip .sub{color:var(--muted);font-size:11.5px}
+.sep{color:#9aa8b6;margin:0 .35em}
+/* Some browsers leave highlight pixels (underline/background edge) behind when a
+   highlight is removed. Toggling the block background forces the whole block to
+   repaint; the transparent underline makes the text paint area include underlines. */
+main.hlr .seq,main.hlr table.exons{background-color:rgba(255,255,255,0)}
+.bases{text-decoration:underline 3px transparent;text-underline-offset:auto}
+.toolbar button.rtf{font-weight:600}
+table.exons{border-collapse:collapse;font-size:13px}
+table.exons th{position:sticky;top:0;background:var(--head);color:#fff;text-align:left;padding:6px 10px;font-weight:600;white-space:nowrap;z-index:1}
+table.exons td{border-bottom:1px solid var(--line);padding:4px 10px;vertical-align:top;white-space:nowrap;background:#fff}
+table.exons tr.alt td{background:var(--stripe)}
+table.exons td:nth-child(3),table.exons td:nth-child(4),table.exons td:nth-child(7){text-align:right;font-variant-numeric:tabular-nums}
+table.exons td:nth-child(5),table.exons td:nth-child(6){text-align:center}
+table.exons tr.intron td{color:var(--muted)}
+table.exons tr.flank td{color:var(--muted);font-style:italic}
+table.exons tr.flank pre{font-style:normal}
+.fl{color:var(--fl)}.ux{color:var(--ux)}.cx{color:var(--cx)}.nx{color:var(--ink)}.in{color:var(--in)}
+table.exons.no-utr .ux{color:var(--cx)}
+table.exons.no-introns tr.intron{display:none}
+table.exons.no-flanks tr.flank{display:none}
+.note{color:var(--muted);font-size:12px;margin-top:10px}
+.hint{font-size:12px;color:var(--muted)}
+.bases{cursor:pointer}
+::highlight(sel){background-color:#a5d8ff;color:#000}
+::highlight(anc){background-color:#1c7ed6;color:#fff}
+::highlight(vsel){color:#e00000;background-color:#ffe066;text-decoration:underline solid 3px #e00000}
+::highlight(vchk){color:#0000e0;background-color:#ffe066;text-decoration:underline solid 3px #0000e0}
+#tip .sq{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px;border:1px solid rgba(255,255,255,.5)}
+#tip{position:fixed;z-index:20;pointer-events:none;background:#1d2733;color:#fff;font-size:12px;line-height:1.4;padding:6px 9px;border-radius:4px;max-width:360px;display:none;box-shadow:0 2px 8px rgba(0,0,0,.25)}
+#tip .af{color:#ffd43b}
+#pickbar{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:2px solid var(--head);box-shadow:0 -4px 14px rgba(0,0,0,.12);display:none;z-index:10}
+body.has-pick #pickbar{display:block}
+#pickbar .dtab{position:absolute;left:20px;bottom:100%;display:flex;align-items:center;gap:10px;background:var(--head);color:#fff;
+  padding:4px 12px 4px 6px;border-radius:6px 6px 0 0;font-size:12px;cursor:ns-resize;user-select:none;touch-action:none;max-width:calc(100vw - 40px)}
+#pickbar .dtoggle{background:rgba(255,255,255,.15);border:none;color:#fff;border-radius:3px;width:24px;height:20px;padding:0;font-size:11px;cursor:pointer;line-height:20px}
+#pickbar .dtoggle:hover{background:rgba(255,255,255,.3)}
+#pickbar .dtitle{font-weight:600}
+#pickbar .dsum{opacity:.85;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-variant-numeric:tabular-nums}
+#pickbar .grip{opacity:.6;letter-spacing:-1px}
+#pickbar .dbody{padding:10px 20px;max-height:80vh;overflow:auto}
+#pickbar.collapsed .dbody{display:none}
+#pickbar.collapsed{border-top-width:2px;box-shadow:none}
+#pickbar .row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;max-width:1400px}
+#pickbar .info{font-size:13px;color:var(--ink);font-variant-numeric:tabular-nums}
+#pickbar .info b{color:var(--head)}
+#pickbar textarea{flex:1 1 420px;min-width:220px;height:48px;resize:vertical;font:12.5px/1.35 Menlo,Consolas,"Courier New",monospace;padding:6px 8px;border:1px solid #9aa8b6;border-radius:3px;word-break:break-all}
+#pickbar button{font:inherit;font-size:13px;padding:5px 12px;border:1px solid #9aa8b6;background:#fff;border-radius:3px;cursor:pointer}
+#pickbar button.primary{background:var(--head);border-color:var(--head);color:#fff}
+#pickbar button.mark{color:#c92a2a;border-color:#e8a0a0;font-weight:600}
+.markvar a{color:#c92a2a}
+.mvb{color:#0000e0}.mvb a{color:#3399ff}
+#pickbar label{font-size:13px;white-space:nowrap;cursor:pointer}
+::highlight(v0){background-color:#ff0000;color:#ffffff;text-decoration:underline dotted 2px rgba(255,255,255,.9)}
+::highlight(v1){background-color:#ff7f50;color:#000000;text-decoration:underline dotted 2px rgba(0,0,0,.75)}
+::highlight(v2){background-color:#ffd700;color:#000000;text-decoration:underline dotted 2px rgba(0,0,0,.75)}
+::highlight(v3){background-color:#76ee00;color:#000000;text-decoration:underline dotted 2px rgba(0,0,0,.75)}
+.vsw.vb0{background:#ff0000;color:#ffffff}
+.vsw.vb1{background:#ff7f50;color:#000000}
+.vsw.vb2{background:#ffd700;color:#000000}
+.vsw.vb3{background:#76ee00;color:#000000}</style></head><body>
+<header class="top"><h1>Transcript: ENST00000359995.10<span class="sep">&ndash;</span>NM_001195427.2</h1><a href="index.html">&larr; all MANE transcripts</a></header>
+<main>
+<dl class="summary">
+<dt>Gene</dt><dd><b>SRSF2</b><span class="sep">&ndash;</span><a class="ext" href="https://grch37.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000161547" target="_blank" rel="noopener" title="Open this gene in Ensembl">ENSG00000161547.19</a></dd>
+<dt>Location (hg19)</dt><dd><a class="ext" href="https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&amp;position=chr17:74730197-74733413" target="_blank" rel="noopener" title="Open this region in the UCSC Genome Browser, hg19">Chromosome 17: 74,730,197-74,733,413 reverse strand.</a> <span class="build" title="Genome assembly of all coordinates and sequences on this page">GRCh37 (hg19)</span> <span class="strand-badge" title="Sequences are shown 5&prime;&rarr;3&prime; of the transcript, i.e. the reverse complement of the genomic + strand">reverse strand</span></dd>
+<dt>About this transcript</dt><dd><a class="ext" href="https://www.ncbi.nlm.nih.gov/nuccore/NM_001195427.2" target="_blank" rel="noopener" title="Open this RefSeq transcript at NCBI"><b>NM_001195427.2</b></a> <span class="sep">&middot;</span> This transcript has 3 exons <span class="chip"><span class="k">cDNA</span><span class="v">1,888 bp</span></span><span class="chip"><span class="k">CDS</span><span class="v">666 bp <span class="sub">(cDNA 172&ndash;837)</span></span></span><span class="chip"><span class="k">Protein</span><span class="v">221 aa</span></span><span class="chip"><span class="k">Biotype</span><span class="v">protein_coding</span></span></dd>
+<dt>Flags</dt><dd><span class="badge mane">MANE Select</span><span class="badge">Ensembl Canonical</span><span class="badge">GENCODE Primary</span></dd>
+</dl>
+
+<div class="varbar off"><b>Variant allele frequencies</b><label title="gnomAD v2.0.1 genomes (GRCh37, via ANNOVAR), AF &gt;= 0.01% (no data for chrY)"><input type="checkbox" id="vshow"> <b id="vlabel">gnomAD Genomes</b> <span class="info-i">i</span></label><label class="vfilter">AF &ge; <select id="vmin"><option value="0.0001">0.01%</option><option value="0.001" selected>0.1%</option><option value="0.01">1%</option><option value="0.05">5%</option></select></label><span class="vlegend"><span class="vsw vb0">&ge;5%</span><span class="vsw vb1">1&ndash;5%</span><span class="vsw vb2">0.1&ndash;1%</span><span class="vsw vb3">0.01&ndash;0.1%</span></span><span class="hint" id="vcount"></span><span class="hint">Hover a coloured base for details</span></div>
+<nav class="tabs"><button data-view="cdna">cDNA sequence</button><button data-view="exons">Exons</button><button data-view="protein">Protein sequence</button></nav>
+
+<section class="view" id="cdna">
+<div class="toolbar"><form class="goto" autocomplete="off"><input type="text" spellcheck="false" placeholder="Go to: c.5946, c.68-7, exon 11, 17:74730197, p.100" aria-label="Go to position"><button type="submit">Go</button><span class="gmsg"></span></form><button class="rtf" title="Download this tab as an RTF file with the colours shown">&#8681; Download RTF</button><span class="hint">Click a base &middot; Shift+click or drag for a range &middot; click a coloured variant to highlight it &middot; select a base and press &#9733; Mark to mark it &middot; Esc clears</span></div>
+<div class="key">
+<b>Codons</b><div><span class="sw">ATG</span><span class="sw c1">CCT</span> alternating codons</div>
+<b>Exons</b><div><span class="sw">An exon</span> <span class="sw x1">Another exon</span></div>
+<b>Other</b><div><span class="sw u">UTR</span> &nbsp;<span class="sw pep">-M-</span> translation</div>
+<b>Markup</b><div><label><input type="checkbox" checked data-toggle="no-codons" data-target="pre.cdna"> Codons</label><label><input type="checkbox" checked data-toggle="no-exons" data-target="pre.cdna"> Exons</label><label><input type="checkbox" checked data-toggle="no-utr" data-target="pre.cdna"> UTR</label><label><input type="checkbox" checked data-toggle="no-trans" data-target="pre.cdna"> CDS &amp; translation lines</label><label><input type="checkbox" checked data-toggle="no-lnum" data-target="pre.cdna"> Line numbers</label></div>
+</div>
+<pre class="seq cdna"><span class="ln"><span class="lnum">   1 </span><span class="bases" data-space="c" data-p="1" data-n="60"><span class="x0 u">AGTTGTTACTCAGGTGCGCTAGCCTGCGGAGCCCGTCCGTGCTGTTCTGCGGCAAGGCCT</span></span><span class="lnum">   60</span>
+</span><span class="ln cdsl"><span class="lnum">     </span>............................................................
+</span><span class="ln pepl"><span class="lnum">     </span>............................................................
+</span><span class="ln gap">
+</span><span class="ln"><span class="lnum">  61 </span><span class="bases" data-space="c" data-p="61" data-n="60"><span class="x0 u">TTCCCAGTGTCCCCACGCGGAAGGCAACTGCCTGAGAGGCGCGGCGTCGCACCGCCCAGA</span></span><span class="lnum">  120</span>
+</span><span class="ln cdsl"><span class="lnum">     </span>............................................................
+</span><span class="ln pepl"><span class="lnum">     </span>............................................................
+</span><span class="ln gap">
+</span><span class="ln"><span class="lnum"> 121 </span><span class="bases" data-space="c" data-p="121" data-n="60"><span class="x0 u">GCTGAGGAAGCCGGCGCCAGTTCGCGGGGCTCCGGGCCGCCACTCAGAGCT</span><span class="x0 c0">ATG</span><span class="x0 c1">AGC</span><span class="x0 c0">TAC</span></span><span class="lnum">  180</span>
+</span><span class="ln cdsl"><span class="lnum">     </span>...................................................<span class="c0">ATG</span><span class="c1">AGC</span><span class="c0">TAC</span><span class="lnum">    9</span>
+</span><span class="ln pepl"><span class="lnum">     </span><span class="pep bases" data-space="p" data-p="1" data-n="3">...................................................-M--S--Y-</span><span class="lnum">    3</span>
+</span><span class="ln gap">
+</span><span class="ln"><span class="lnum"> 181 </span><span class="bases" data-space="c" data-p="181" data-n="60"><span class="x0 c1">GGC</span><span class="x0 c0">CGC</span><span class="x0 c1">CCC</span><span class="x0 c0">CCT</span><span class="x0 c1">CCC</span><span class="x0 c0">GAT</span><span class="x0 c1">GTG</span><span class="x0 c0">GAG</span><span class="x0 c1">GGT</span><span class="x0 c0">ATG</span><span class="x0 c1">ACC</span><span class="x0 c0">TCC</span><span class="x0 c1">CTC</span><span class="x0 c0">AAG</span><span class="x0 c1">GTG</span><span class="x0 c0">GAC</span><span class="x0 c1">AAC</span><span class="x0 c0">CTG</span><span class="x0 c1">ACC</span><span class="x0 c0">TAC</span></span><span class="lnum">  240</span>
+</span><span class="ln cdsl"><span class="lnum">  10 </span><span class="c1">GGC</span><span class="c0">CGC</span><span class="c1">CCC</span><span class="c0">CCT</span><span class="c1">CCC</span><span class="c0">GAT</span><span class="c1">GTG</span><span class="c0">GAG</span><span class="c1">GGT</span><span class="c0">ATG</span><span class="c1">ACC</span><span class="c0">TCC</span><span class="c1">CTC</span><span class="c0">AAG</span><span class="c1">GTG</span><span class="c0">GAC</span><span class="c1">AAC</span><span class="c0">CTG</span><span class="c1">ACC</span><span class="c0">TAC</span><span class="lnum">   69</span>
+</span><span class="ln pepl"><span class="lnum">   4 </span><span class="pep bases" data-space="p" data-p="4" data-n="20">-G--R--P--P--P--D--V--E--G--M--T--S--L--K--V--D--N--L--T--Y-</span><span class="lnum">   23</span>
+</span><span class="ln gap">
+</span><span class="ln"><span class="lnum"> 241 </span><span class="bases" data-space="c" data-p="241" data-n="60"><span class="x0 c1">CGC</span><span class="x0 c0">ACC</span><span class="x0 c1">TCG</span><span class="x0 c0">CCC</span><span class="x0 c1">GAC</span><span class="x0 c0">ACG</span><span class="x0 c1">CTG</span><span class="x0 c0">AGG</span><span class="x0 c1">CGC</span><span class="x0 c0">GTC</span><span class="x0 c1">TTC</span><span class="x0 c0">GAG</span><span class="x0 c1">AAG</span><span class="x0 c0">TAC</span><span class="x0 c1">GGG</span><span class="x0 c0">CGC</span><span class="x0 c1">GTC</span><span class="x0 c0">GGC</span><span class="x0 c1">GAC</span><span class="x0 c0">GTG</span></span><span class="lnum">  300</span>
+</span><span class="ln cdsl"><span class="lnum">  70 </span><span class="c1">CGC</span><span class="c0">ACC</span><span class="c1">TCG</span><span class="c0">CCC</span><span class="c1">GAC</span><span class="c0">ACG</span><span class="c1">CTG</span><span class="c0">AGG</span><span class="c1">CGC</span><span class="c0">GTC</span><span class="c1">TTC</span><span class="c0">GAG</span><span class="c1">AAG</span><span class="c0">TAC</span><span class="c1">GGG</span><span class="c0">CGC</span><span class="c1">GTC</span><span class="c0">GGC</span><span class="c1">GAC</span><span class="c0">GTG</span><span class="lnum">  129</span>
+</span><span class="ln pepl"><span class="lnum">  24 </span><span class="pep bases" data-space="p" data-p="24" data-n="20">-R--T--S--P--D--T--L--R--R--V--F--E--K--Y--G--R--V--G--D--V-</span><span class="lnum">   43</span>
+</span><span class="ln gap">
+</span><span class="ln"><span class="lnum"> 301 </span><span class="bases" data-space="c" data-p="301" data-n="60"><span class="x0 c1">TAC</span><span class="x0 c0">ATC</span><span class="x0 c1">CCG</span><span class="x0 c0">CGG</span><span class="x0 c1">GAC</span><span class="x0 c0">CGC</span><span class="x0 c1">TAC</span><span class="x0 c0">ACC</span><span class="x0 c1">AAG</span><span class="x0 c0">GAG</span><span class="x0 c1">TCC</span><span class="x0 c0">CGC</span><span class="x0 c1">GGC</span><span class="x0 c0">TTC</span><span class="x0 c1">GCC</span><span class="x0 c0">TTC</span><span class="x0 c1">GTT</span><span class="x0 c0">CGC</span><span class="x0 c1">TTT</span><span class="x0 c0">CAC</span></span><span class="lnum">  360</span>
+</span><span class="ln cdsl"><span class="lnum"> 130 </span><span class="c1">TAC</span><span class="c0">ATC</span><span class="c1">CCG</span><span class="c0">CGG</span><span class="c1">GAC</span><span class="c0">CGC</span><span class="c1">TAC</span><span class="c0">ACC</span><span class="c1">AAG</span><span class="c0">GAG</span><span class="c1">TCC</span><span class="c0">CGC</span><span class="c1">GGC</span><span class="c0">TTC</span><span class="c1">GCC</span><span class="c0">TTC</span><span class="c1">GTT</span><span class="c0">CGC</span><span class="c1">TTT</span><span class="c0">CAC</span><span class="lnum">  189</span>
+</span><span class="ln pepl"><span class="lnum">  44 </span><span class="pep bases" data-space="p" data-p="44" data-n="20">-Y--I--P--R--D--R--Y--T--K--E--S--R--G--F--A--F--V--R--F--H-</span><span class="lnum">   63</span>
+</span><span class="ln gap">
+</span><span class="ln"><span class="lnum"> 361 </span><span class="bases" data-space="c" data-p="361" data-n="60"><span class="x0 c1">GAC</span><span class="x0 c0">AAG</span><span class="x0 c1">CGC</span><span class="x0 c0">GAC</span><span class="x0 c1">GCT</span><span class="x0 c0">GAG</span><span class="x0 c1">GAC</span><span class="x0 c0">GCT</span><span class="x0 c1">ATG</span><span class="x0 c0">GAT</span><span class="x0 c1">GCC</span><span class="x0 c0">ATG</span><span class="x0 c1">GAC</span><span class="x0 c0">GGG</span><span class="x0 c1">GCC</span><span class="x0 c0">GTG</span><span class="x0 c1">CTG</span><span class="x0 c0">GAC</span><span class="x0 c1">GGC</span><span class="x0 c0">CGC</span></span><span class="lnum">  420</span>
+</span><span class="ln cdsl"><span class="lnum"> 190 </span><span class="c1">GAC</span><span class="c0">AAG</span><span class="c1">CGC</span><span class="c0">GAC</span><span class="c1">GCT</span><span class="c0">GAG</span><span class="c1">GAC</span><span class="c0">GCT</span><span class="c1">ATG</span><span class="c0">GAT</span><span class="c1">GCC</span><span class="c0">ATG</span><span class="c1">GAC</span><span class="c0">GGG</span><span class="c1">GCC</span><span class="c0">GTG</span><span class="c1">CTG</span><span class="c0">GAC</span><span class="c1">GGC</span><span class="c0">CGC</span><span class="lnum">  249</span>
+</span><span class="ln pepl"><span class="lnum">  64 </span><span class="pep bases" data-space="p" data-p="64" data-n="20">-D--K--R--D--A--E--D--A--M--D--A--M--D--G--A--V--L--D--G--R-</span><span class="lnum">   83</span>
+</span><span class="ln gap">
+</span><span class="ln"><span class="lnum"> 421 </span><span class="bases" data-space="c" data-p="421" data-n="60"><span class="x0 c1">GAG</span><span class="x0 c0">CTG</span><span class="x0 c1">CGG</span><span class="x0 c0">GTG</span><span class="x0 c1">CAA</span><span class="x0 c0">ATG</span><span class="x0 c1">GCG</span><span class="x0 c0">CGC</span><span class="x0 c1">TAC</span><span class="x0 c0">GGC</span><span class="x0 c1">CGC</span><span class="x0 c0">CCC</span><span class="x0 c1">CCG</span><span class="x0 c0">GAC</span><span class="x0 c1">TCA</span><span class="x0 c0">CAC</span><span class="x0 c1">CAC</span><span class="x0 c0">AGC</span><span class="x0 c1">CGC</span><span class="x0 c0">CGG</span></span><span class="lnum">  480</span>
+</span><span class="ln cdsl"><span class="lnum"> 250 </span><span class="c1">GAG</span><span class="c0">CTG</span><span class="c1">CGG</span><span class="c0">GTG</span><span class="c1">CAA</span><span class="c0">ATG</span><span class="c1">GCG</span><span class="c0">CGC</span><span class="c1">TAC</span><span class="c0">GGC</span><span class="c1">CGC</span><span class="c0">CCC</span><span class="c1">CCG</span><span class="c0">GAC</span><span class="c1">TCA</span><span class="c0">CAC</span><span class="c1">CAC</span><span class="c0">AGC</span><span class="c1">CGC</span><span class="c0">CGG</span><span class="lnum">  309</span>
+</span><span class="ln pepl"><span class="lnum">  84 </span><span class="pep bases" data-space="p" data-p="84" data-n="20">-E--L--R--V--Q--M--A--R--Y--G--R--P--P--D--S--H--H--S--R--R-</span><span class="lnum">  103</span>
+</span><span class="ln gap">
+</span><span class="ln"><span class="lnum"> 481 </span><span class="bases" data-space="c" data-p="481" data-n="60"><span class="x0 c1">GGA</span><span class="x0 c0">CCG</span><span class="x0 c1">CCA</span><span class="x0 c0">CCC</span><span class="x0 c1">CGC</span><span class="x0 c0">AGG</span><span class="x0 c1">TAC</span><span class="x0 c0">GGG</span><span class="x0 c1">GGC</span><span class="x0 c0">GGT</span><span class="x0 c1">GGC</span><span class="x0 c0">TAC</span><span class="x0 c1">GGA</span><span class="x0 c0">CGC</span><span class="x0 c1">CGG</span><span class="x0 c0">AGC</span><span class="x0 c1">CGC</span><span class="x0 c0">AG</span><span class="x1 c0">C</span><span class="x1 c1">CCT</span><span class="x1 c0">AGG</span></span><span class="lnum">  540</span>
+</span><span class="ln cdsl"><span class="lnum"> 310 </span><span class="c1">GGA</span><span class="c0">CCG</span><span class="c1">CCA</span><span class="c0">CCC</span><span class="c1">CGC</span><span class="c0">AGG</span><span class="c1">TAC</span><span class="c0">GGG</span><span class="c1">GGC</span><span class="c0">GGT</span><span class="c1">GGC</span><span class="c0">TAC</span><span class="c1">GGA</span><span class="c0">CGC</span><span class="c1">CGG</span><span class="c0">AGC</span><span class="c1">CGC</span><span class="c0">AGC</span><span class="c1">CCT</span><span class="c0">AGG</span><span class="lnum">  369</span>
+</span><span class="ln pepl"><span class="lnum"> 104 </span><span class="pep bases" data-space="p" data-p="104" data-n="20">-G--P--P--P--R--R--Y--G--G--G--G--Y--G--R--R--S--R--S--P--R-</span><span class="lnum">  123</span>
+</span><span class="ln gap">
+</span><span class="ln"><span class="lnum"> 541 </span><span class="bases" data-space="c" data-p="541" data-n="60"><span class="x1 c1">CGG</span><span class="x1 c0">CGT</span><span class="x1 c1">CGC</span><span class="x1 c0">CGC</span><span class="x1 c1">AGC</span><span class="x1 c0">CGA</span><span class="x1 c1">TCC</span><span class="x1 c0">CGG</span><span class="x1 c1">AGT</span><span class="x1 c0">CGG</span><span class="x1 c1">AGT</span><span class="x1 c0">CGT</span><span class="x1 c1">TCC</span><span class="x1 c0">AGG</span><span class="x1 c1">TCT</span><span class="x1 c0">CGC</span><span class="x1 c1">AGC</span><span class="x1 c0">CGA</span><span class="x1 c1">TCT</span><span class="x1 c0">CGC</span></span><span class="lnum">  600</span>
+</span><span class="ln cdsl"><span class="lnum"> 370 </span><span class="c1">CGG</span><span class="c0">CGT</span><span class="c1">CGC</span><span class="c0">CGC</span><span class="c1">AGC</span><span class="c0">CGA</span><span class="c1">TCC</span><span class="c0">CGG</span><span class="c1">AGT</span><span class="c0">CGG</span><span class="c1">AGT</span><span class="c0">CGT</span><span class="c1">TCC</span><span class="c0">AGG</span><span class="c1">TCT</span><span class="c0">CGC</span><span class="c1">AGC</span><span class="c0">CGA</span><span class="c1">TCT</span><span class="c0">CGC</span><span class="lnum">  429</span>
+</span><span class="ln pepl"><span class="lnum"> 124 </span><span class="pep bases" data-space="p" data-p="124" data-n="20">-R--R--R--R--S--R--S--R--S--R--S--R--S--R--S--R--S--R--S--R-</span><span class="lnum">  143</span>
+</span><span class="ln gap">
+</span><span class="ln"><span class="lnum"> 601 </span><span class="bases" data-space="c" data-p="601" data-n="60"><span class="x1 c1">TAC</span><span class="x1 c0">AGC</span><span class="x1 c1">CGC</span><span class="x1 c0">TCG</span><span class="x1 c1">AAG</span><span class="x1 c0">TCT</span><span class="x1 c1">CGG</span><span class="x1 c0">TCC</span><span class="x1 c1">CGC</span><span class="x1 c0">ACT</span><span class="x1 c1">CGT</span><span class="x1 c0">TCT</span><span class="x1 c1">CGA</span><span class="x1 c0">TCT</span><span class="x1 c1">CGG</span><span class="x1 c0">TCG</span><span class="x1 c1">ACC</span><span class="x1 c0">TCC</span><span class="x1 c1">AAG</span><span class="x1 c0">TCC</span></span><span class="lnum">  660</span>
+</span><span class="ln cdsl"><span class="lnum"> 430 </span><span class="c1">TAC</span><span class="c0">AGC</span><span class="c1">CGC</span><span class="c0">TCG</span><span class="c1">AAG</span><span class="c0">TCT</span><span class="c1">CGG</span><span class="c0">TCC</span><span class="c1">CGC</span><span class="c0">ACT</span><span class="c1">CGT</span><span class="c0">TCT</span><span class="c1">CGA</span><span class="c0">TCT</span><span class="c1">CGG</span><span class="c0">TCG</span><span class="c1">ACC</span><span class="c0">TCC</span><span class="c1">AAG</span><span class="c0">TCC</span><span class="lnum">  489</span>
+</span><span class="ln pepl"><span class="lnum"> 144 </span><span class="pep bases" data-space="p" data-p="144" data-n="20">-Y--S--R--S--K--S--R--S--R--T--R--S--R--S--R--S--T--S--K--S-</span><span class="lnum">  163</span>
+</span><span class="ln gap">
+</span><span class="ln"><span class="lnum"> 661 </span><span class="bases" data-space="c" data-p="661" data-n="60"><span class="x1 c1">AGA</span><span class="x1 c0">TCC</span><span class="x1 c1">GCA</span><span class="x1 c0">CGA</span><span class="x1 c1">AGG</span><span class="x1 c0">TCC</span><span class="x1 c1">AAG</span><span class="x1 c0">TCC</span><span class="x1 c1">AAG</span><span class="x1 c0">TCC</span><span class="x1 c1">TCG</span><span class="x1 c0">TCG</span><span class="x1 c1">GTC</span><span class="x1 c0">TCC</span><span class="x1 c1">AGA</span><span class="x1 c0">TCT</span><span class="x1 c1">CGT</span><span class="x1 c0">TCG</span><span class="x1 c1">CGG</span><span class="x1 c0">TCC</span></span><span class="lnum">  720</span>
+</span><span class="ln cdsl"><span class="lnum"> 490 </span><span class="c1">AGA</span><span class="c0">TCC</span><span class="c1">GCA</span><span class="c0">CGA</span><span class="c1">AGG</span><span class="c0">TCC</span><span class="c1">AAG</span><span class="c0">TCC</span><span class="c1">AAG</span><span class="c0">TCC</span><span class="c1">TCG</span><span class="c0">TCG</span><span class="c1">GTC</span><span class="c0">TCC</span><span class="c1">AGA</span><span class="c0">TCT</span><span class="c1">CGT</span><span class="c0">TCG</span><span class="c1">CGG</span><span class="c0">TCC</span><span class="lnum">  549</span>
+</span><span class="ln pepl"><span class="lnum"> 164 </span><span class="pep bases" data-space="p" data-p="164" data-n="20">-R--S--A--R--R--S--K--S--K--S--S--S--V--S--R--S--R--S--R--S-</span><span class="lnum">  183</span>
+</span><span class="ln gap">
+</span><span class="ln"><span class="lnum"> 721 </span><span class="bases" data-space="c" data-p="721" data-n="60"><span class="x1 c1">AGG</span><span class="x1 c0">TCC</span><span class="x1 c1">CGG</span><span class="x1 c0">TCT</span><span class="x1 c1">CGG</span><span class="x1 c0">TCC</span><span class="x1 c1">AGG</span><span class="x1 c0">AGT</span><span class="x1 c1">CCT</span><span class="x1 c0">CCC</span><span class="x1 c1">CCA</span><span class="x1 c0">GTG</span><span class="x1 c1">TCC</span><span class="x1 c0">AAG</span><span class="x1 c1">AGG</span><span class="x1 c0">GAA</span><span class="x1 c1">TCC</span><span class="x1 c0">AAA</span><span class="x1 c1">TCC</span><span class="x1 c0">AGG</span></span><span class="lnum">  780</span>
+</span><span class="ln cdsl"><span class="lnum"> 550 </span><span class="c1">AGG</span><span class="c0">TCC</span><span class="c1">CGG</span><span class="c0">TCT</span><span class="c1">CGG</span><span class="c0">TCC</span><span class="c1">AGG</span><span class="c0">AGT</span><span class="c1">CCT</span><span class="c0">CCC</span><span class="c1">CCA</span><span class="c0">GTG</span><span class="c1">TCC</span><span class="c0">AAG</span><span class="c1">AGG</span><span class="c0">GAA</span><span class="c1">TCC</span><span class="c0">AAA</span><span class="c1">TCC</span><span class="c0">AGG</span><span class="lnum">  609</span>
+</span><span class="ln pepl"><span class="lnum"> 184 </span><span class="pep bases" data-space="p" data-p="184" data-n="20">-R--S--R--S--R--S--R--S--P--P--P--V--S--K--R--E--S--K--S--R-</span><span class="lnum">  203</span>
+</span><span class="ln gap">
+</span><span class="ln"><span class="lnum"> 781 </span><span class="bases" data-space="c" data-p="781" data-n="60"><span class="x1 c1">TCG</span><span class="x1 c0">CGA</span><span class="x1 c1">TCG</span><span class="x1 c0">AAG</span><span class="x1 c1">AGT</span><span class="x1 c0">CCC</span><span class="x1 c1">CCC</span><span class="x1 c0">AAG</span><span class="x1 c1">TCT</span><span class="x1 c0">CCT</span><span class="x1 c1">GAA</span><span class="x1 c0">GAG</span><span class="x1 c1">GAA</span><span class="x1 c0">GGA</span><span class="x1 c1">GCG</span><span class="x1 c0">GTG</span><span class="x1 c1">TCC</span><span class="x1 c0">TCT</span><span class="x1 c1">TAA</span><span class="x1 u">GAA</span></span><span class="lnum">  840</span>
+</span><span class="ln cdsl"><span class="lnum"> 610 </span><span class="c1">TCG</span><span class="c0">CGA</span><span class="c1">TCG</span><span class="c0">AAG</span><span class="c1">AGT</span><span class="c0">CCC</span><span class="c1">CCC</span><span class="c0">AAG</span><span class="c1">TCT</span><span class="c0">CCT</span><span class="c1">GAA</span><span class="c0">GAG</span><span class="c1">GAA</span><span class="c0">GGA</span><span class="c1">GCG</span><span class="c0">GTG</span><span class="c1">TCC</span><span class="c0">TCT</span><span class="c1">TAA</span>...<span class="lnum">  666</span>
+</span><span class="ln pepl"><span class="lnum"> 204 </span><span class="pep bases" data-space="p" data-p="204" data-n="19">-S--R--S--K--S--P--P--K--S--P--E--E--E--G--A--V--S--S--*-...</span><span class="lnum">  222</span>
+</span><span class="ln gap">
+</span><span class="ln"><span class="lnum"> 841 </span><span class="bases" data-space="c" data-p="841" data-n="60"><span class="x1 u">AATG</span><span class="x0 u">ATGTATCGGCAAGCAGTGTAAACGGAGGACTTGGGGAAAAAGGACCACATAGTCCA</span></span><span class="lnum">  900</span>
+</span><span class="ln cdsl"><span class="lnum">     </span>............................................................
+</span><span class="ln pepl"><span class="lnum">     </span>............................................................
+</span><span class="ln gap">
+</span><span class="ln"><span class="lnum"> 901 </span><span class="bases" data-space="c" data-p="901" data-n="60"><span class="x0 u">TCGAAGAAGAGTCCTTGGAACAAGCAACTGGCTATTGAAAAGGTTATTTTGTAACATTTG</span></span><span class="lnum">  960</span>
+</span><span class="ln cdsl"><span class="lnum">     </span>............................................................
+</span><span class="ln pepl"><span class="lnum">     </span>............................................................
+</span><span class="ln gap">
+</span><span class="ln"><span class="lnum"> 961 </span><span class="bases" data-space="c" data-p="961" data-n="60"><span class="x0 u">TCTAACTTTTTACTTGTTTAAGCTTTGCCTCAGTTGGCAAACTTCATTTTATGTGCCATT</span></span><span class="lnum"> 1020</span>
+</span><span class="ln cdsl"><span class="lnum">     </span>............................................................
+</span><span class="ln pepl"><span class="lnum">     </span>............................................................
+</span><span class="ln gap">
+</span><span class="ln"><span class="lnum">1021 </span><span class="bases" data-space="c" data-p="1021" data-n="60"><span class="x0 u">TTGTTGCTGTTATTCAAATTTCTTGTAATTTAGTGAGGTGAACGACTTCAGATTTCATTA</span></span><span class="lnum"> 1080</span>
+</span><span class="ln cdsl"><span class="lnum">     </span>............................................................
+</span><span class="ln pepl"><span class="lnum">     </span>............................................................
+</span><span class="ln gap">
+</span><span class="ln"><span class="lnum">1081 </span><span class="bases" data-space="c" data-p="1081" data-n="60"><span class="x0 u">TTGGATTTGGATATTTGAGGTAAAATTTCATTTTGTTATATAGTGCTGACTTTTTTTGTT</span></span><span class="lnum"> 1140</span>
+</span><span class="ln cdsl"><span class="lnum">     </span>............................................................
+</span><span class="ln pepl"><span class="lnum">     </span>............................................................
+</span><span class="ln gap">
+</span><span class="ln"><span class="lnum">1141 </span><span class="bases" data-space="c" data-p="1141" data-n="60"><span class="x0 u">TGAAATTAAACAGATTGGTAACCTAATTTGTGGCCTCCTGACTTTTAAGGAAAACGTGTG</span></span><span class="lnum"> 1200</span>
+</span><span class="ln cdsl"><span class="lnum">     </span>............................................................
+</span><span class="ln pepl"><span class="lnum">     </span>............................................................
+</span><span class="ln gap">
+</span><span class="ln"><span class="lnum">1201 </span><span class="bases" data-space="c" data-p="1201" data-n="60"><span class="x0 u">CAGCCATTACACACAGCCTAAAGCTGTCAAGAGATTGACTCAGCATTGCCTTCATTCCTT</span></span><span class="lnum"> 1260</span>
+</span><span class="ln cdsl"><span class="lnum">     </span>............................................................
+</span><span class="ln pepl"><span class="lnum">     </span>............................................................
+</span><span class="ln gap">
+</span><span class="ln"><span class="lnum">1261 </span><span class="bases" data-space="c" data-p="1261" data-n="60"><span class="x0 u">AAAATTAAAAACCTACAAAAGTTGGTGTAAATTTGTATATGTTATTTACCTTCAGATCTA</span></span><span class="lnum"> 1320</span>
+</span><span class="ln cdsl"><span class="lnum">     </span>............................................................
+</span><span class="ln pepl"><span class="lnum">     </span>............................................................
+</span><span class="ln gap">
+</span><span class="ln"><span class="lnum">1321 </span><span class="bases" data-space="c" data-p="1321" data-n="60"><span class="x0 u">AATGGTAATCTGAACCCAAATTTGTATAAAGACTTTTCAGGTGAAAAGACTTGATTTTTT</span></span><span class="lnum"> 1380</span>
+</span><span class="ln cdsl"><span class="lnum">     </span>............................................................
+</span><span class="ln pepl"><span class="lnum">     </span>............................................................
+</span><span class="ln gap">
+</span><span class="ln"><span class="lnum">1381 </span><span class="bases" data-space="c" data-p="1381" data-n="60"><span class="x0 u">GAAAGGATTGTTTATCAAACACAATTCTAATCTCTTCTCTTATGTATTTTTGTGCACTAG</span></span><span class="lnum"> 1440</span>
+</span><span class="ln cdsl"><span class="lnum">     </span>............................................................
+</span><span class="ln pepl"><span class="lnum">     </span>............................................................
+</span><span class="ln gap">
+</span><span class="ln"><span class="lnum">1441 </span><span class="bases" data-space="c" data-p="1441" data-n="60"><span class="x0 u">GCGCAGTTGTGTAGCAGTTGAGTAATGCTGGTTAGCTGTTAAGGTGGCGTGTTGCAGTGC</span></span><span class="lnum"> 1500</span>
+</span><span class="ln cdsl"><span class="lnum">     </span>............................................................
+</span><span class="ln pepl"><span class="lnum">     </span>............................................................
+</span><span class="ln gap">
+</span><span class="ln"><span class="lnum">1501 </span><span class="bases" data-space="c" data-p="1501" data-n="60"><span class="x0 u">AGAGTGCTTGGCTGTTTCCTGTTTTCTCCCGATTGCTCCTGTGTAAAGATGCCTTGTCGT</span></span><span class="lnum"> 1560</span>
+</span><span class="ln cdsl"><span class="lnum">     </span>............................................................
+</span><span class="ln pepl"><span class="lnum">     </span>............................................................
+</span><span class="ln gap">
+</span><span class="ln"><span class="lnum">1561 </span><span class="bases" data-space="c" data-p="1561" data-n="60"><span class="x0 u">GCAGAAACAAATGGCTGTCCAGTTTATTAAAATGCCTGACAACTGCACTTCCAGTCACCC</span></span><span class="lnum"> 1620</span>
+</span><span class="ln cdsl"><span class="lnum">     </span>............................................................
+</span><span class="ln pepl"><span class="lnum">     </span>............................................................
+</span><span class="ln gap">
+</span><span class="ln"><span class="lnum">1621 </span><span class="bases" data-space="c" data-p="1621" data-n="60"><span class="x0 u">GGGCCTTGCATATAAATAACGGAGCATACAGTGAGCACATCTAGCTGATGATAAATACAC</span></span><span class="lnum"> 1680</span>
+</span><span class="ln cdsl"><span class="lnum">     </span>............................................................
+</span><span class="ln pepl"><span class="lnum">     </span>............................................................
+</span><span class="ln gap">
+</span><span class="ln"><span class="lnum">1681 </span><span class="bases" data-space="c" data-p="1681" data-n="60"><span class="x0 u">CTTTTTTTCCCTCTTCCCCCTAAAAATGGTAAATCTGATCATATCTACATGTATGAACTT</span></span><span class="lnum"> 1740</span>
+</span><span class="ln cdsl"><span class="lnum">     </span>............................................................
+</span><span class="ln pepl"><span class="lnum">     </span>............................................................
+</span><span class="ln gap">
+</span><span class="ln"><span class="lnum">1741 </span><span class="bases" data-space="c" data-p="1741" data-n="60"><span class="x0 u">AACATGGAAAATGTTAAGGAAGCAAATGGTTGTAACTTTGTAAGTACTTATAACATGGTG</span></span><span class="lnum"> 1800</span>
+</span><span class="ln cdsl"><span class="lnum">     </span>............................................................
+</span><span class="ln pepl"><span class="lnum">     </span>............................................................
+</span><span class="ln gap">
+</span><span class="ln"><span class="lnum">1801 </span><span class="bases" data-space="c" data-p="1801" data-n="60"><span class="x0 u">TATCTTTTTGCTTATGAATATTCTGTATTATAACCATTGTTTCTGTAGTTTAATTAAAAC</span></span><span class="lnum"> 1860</span>
+</span><span class="ln cdsl"><span class="lnum">     </span>............................................................
+</span><span class="ln pepl"><span class="lnum">     </span>............................................................
+</span><span class="ln gap">
+</span><span class="ln"><span class="lnum">1861 </span><span class="bases" data-space="c" data-p="1861" data-n="28"><span class="x0 u">ATTTTCTTGGTGTTAGCTTTTCTCAGAA</span></span>                                <span class="lnum"> 1888</span>
+</span><span class="ln cdsl"><span class="lnum">     </span>............................
+</span><span class="ln pepl"><span class="lnum">     </span>............................
+</span><span class="ln gap">
+</span></pre>
+</section>
+
+<section class="view" id="exons">
+<div class="toolbar"><form class="goto" autocomplete="off"><input type="text" spellcheck="false" placeholder="Go to: c.5946, c.68-7, exon 11, 17:74730197, p.100" aria-label="Go to position"><button type="submit">Go</button><span class="gmsg"></span></form><button class="rtf" title="Download this tab as an RTF file with the colours shown">&#8681; Download RTF</button><span class="hint">Click a base &middot; Shift+click or drag for a range &middot; click a coloured variant to highlight it &middot; select a base and press &#9733; Mark to mark it &middot; Esc clears</span></div>
+<div class="key">
+<b>Key</b><div><span class="sw fl">flanking</span> <span class="sw ux">UTR</span> <span class="sw cx">CDS</span> <span class="sw in">intron</span> &nbsp;<span class="strand-badge">reverse strand</span> <span class="hint">Start &gt; End: coordinates run high &rarr; low; sequence is 5&prime;&rarr;3&prime; of the transcript</span></div>
+<b>Intron sequence</b><div><select id="intronsize" aria-label="Intron and flank sequence shown"><option value="25" selected>25 bp</option><option value="50">50 bp</option><option value="100">100 bp</option><option value="250">250 bp</option><option value="500">500 bp</option><option value="1000">1,000 bp</option></select> <span class="hint">of intron shown next to each exon; the middle of longer introns appears as ..........</span></div>
+<b>Markup</b><div><label><input type="checkbox" checked data-toggle="no-introns" data-target="table.exons"> Introns</label><label><input type="checkbox" checked data-toggle="no-flanks" data-target="table.exons"> Flanking sequence</label><label><input type="checkbox" checked data-toggle="no-utr" data-target="table.exons"> UTR</label><label><input type="checkbox" checked data-toggle="no-lnum" data-target="table.exons"> Line numbers</label></div>
+</div>
+<table class="exons"><thead><tr><th>No.</th><th>Exon / Intron</th><th>Start</th><th>End</th><th>Start phase</th><th>End phase</th><th>Length</th><th>Sequence</th></tr></thead><tbody><tr class="flank"><td></td><td>5' upstream sequence</td><td></td><td></td><td></td><td></td><td></td><td class="sq" data-flank="up"></td></tr>
+<tr class="exon"><td>1</td><td class="id">Exon 1</td><td>74,733,413</td><td>74,732,881</td><td>-</td><td>2</td><td>533</td><td><pre class="seq bases" data-space="g" data-p="1" data-n="533"><span class="lnum">     </span><span class="ux">AGTTGTTACTCAGGTGCGCTAGCCTGCGGAGCCCGTCCGTGCTGTTCTGCGGCAAGGCCT</span>
+<span class="lnum">     </span><span class="ux">TTCCCAGTGTCCCCACGCGGAAGGCAACTGCCTGAGAGGCGCGGCGTCGCACCGCCCAGA</span>
+<span class="lnum">   1 </span><span class="ux">GCTGAGGAAGCCGGCGCCAGTTCGCGGGGCTCCGGGCCGCCACTCAGAGCT</span><span class="cx">ATGAGCTAC</span><span class="lnum">    9</span>
+<span class="lnum">  10 </span><span class="cx">GGCCGCCCCCCTCCCGATGTGGAGGGTATGACCTCCCTCAAGGTGGACAACCTGACCTAC</span><span class="lnum">   69</span>
+<span class="lnum">  70 </span><span class="cx">CGCACCTCGCCCGACACGCTGAGGCGCGTCTTCGAGAAGTACGGGCGCGTCGGCGACGTG</span><span class="lnum">  129</span>
+<span class="lnum"> 130 </span><span class="cx">TACATCCCGCGGGACCGCTACACCAAGGAGTCCCGCGGCTTCGCCTTCGTTCGCTTTCAC</span><span class="lnum">  189</span>
+<span class="lnum"> 190 </span><span class="cx">GACAAGCGCGACGCTGAGGACGCTATGGATGCCATGGACGGGGCCGTGCTGGACGGCCGC</span><span class="lnum">  249</span>
+<span class="lnum"> 250 </span><span class="cx">GAGCTGCGGGTGCAAATGGCGCGCTACGGCCGCCCCCCGGACTCACACCACAGCCGCCGG</span><span class="lnum">  309</span>
+<span class="lnum"> 310 </span><span class="cx">GGACCGCCACCCCGCAGGTACGGGGGCGGTGGCTACGGACGCCGGAGCCGCAG</span>       <span class="lnum">  362</span></pre></td></tr>
+<tr class="intron"><td></td><td>Intron 1-2</td><td>74,732,880</td><td>74,732,547</td><td></td><td></td><td>334</td><td class="sq" data-intron="0"></td></tr>
+<tr class="exon"><td>2</td><td class="id">Exon 2</td><td>74,732,546</td><td>74,732,236</td><td>2</td><td>-</td><td>311</td><td><pre class="seq bases" data-space="g" data-p="868" data-n="311"><span class="lnum"> 363 </span><span class="cx">CCCTAGGCGGCGTCGCCGCAGCCGATCCCGGAGTCGGAGTCGTTCCAGGTCTCGCAGCCG</span><span class="lnum">  422</span>
+<span class="lnum"> 423 </span><span class="cx">ATCTCGCTACAGCCGCTCGAAGTCTCGGTCCCGCACTCGTTCTCGATCTCGGTCGACCTC</span><span class="lnum">  482</span>
+<span class="lnum"> 483 </span><span class="cx">CAAGTCCAGATCCGCACGAAGGTCCAAGTCCAAGTCCTCGTCGGTCTCCAGATCTCGTTC</span><span class="lnum">  542</span>
+<span class="lnum"> 543 </span><span class="cx">GCGGTCCAGGTCCCGGTCTCGGTCCAGGAGTCCTCCCCCAGTGTCCAAGAGGGAATCCAA</span><span class="lnum">  602</span>
+<span class="lnum"> 603 </span><span class="cx">ATCCAGGTCGCGATCGAAGAGTCCCCCCAAGTCTCCTGAAGAGGAAGGAGCGGTGTCCTC</span><span class="lnum">  662</span>
+<span class="lnum"> 663 </span><span class="cx">TTAA</span><span class="ux">GAAAATG</span>                                                 <span class="lnum">  666</span></pre></td></tr>
+<tr class="intron"><td></td><td>Intron 2-3</td><td>74,732,235</td><td>74,731,241</td><td></td><td></td><td>995</td><td class="sq" data-intron="1"></td></tr>
+<tr class="exon"><td>3</td><td class="id">Exon 3</td><td>74,731,240</td><td>74,730,197</td><td>-</td><td>-</td><td>1,044</td><td><pre class="seq bases" data-space="g" data-p="2174" data-n="1044"><span class="lnum">     </span><span class="ux">ATGTATCGGCAAGCAGTGTAAACGGAGGACTTGGGGAAAAAGGACCACATAGTCCATCGA</span>
+<span class="lnum">     </span><span class="ux">AGAAGAGTCCTTGGAACAAGCAACTGGCTATTGAAAAGGTTATTTTGTAACATTTGTCTA</span>
+<span class="lnum">     </span><span class="ux">ACTTTTTACTTGTTTAAGCTTTGCCTCAGTTGGCAAACTTCATTTTATGTGCCATTTTGT</span>
+<span class="lnum">     </span><span class="ux">TGCTGTTATTCAAATTTCTTGTAATTTAGTGAGGTGAACGACTTCAGATTTCATTATTGG</span>
+<span class="lnum">     </span><span class="ux">ATTTGGATATTTGAGGTAAAATTTCATTTTGTTATATAGTGCTGACTTTTTTTGTTTGAA</span>
+<span class="lnum">     </span><span class="ux">ATTAAACAGATTGGTAACCTAATTTGTGGCCTCCTGACTTTTAAGGAAAACGTGTGCAGC</span>
+<span class="lnum">     </span><span class="ux">CATTACACACAGCCTAAAGCTGTCAAGAGATTGACTCAGCATTGCCTTCATTCCTTAAAA</span>
+<span class="lnum">     </span><span class="ux">TTAAAAACCTACAAAAGTTGGTGTAAATTTGTATATGTTATTTACCTTCAGATCTAAATG</span>
+<span class="lnum">     </span><span class="ux">GTAATCTGAACCCAAATTTGTATAAAGACTTTTCAGGTGAAAAGACTTGATTTTTTGAAA</span>
+<span class="lnum">     </span><span class="ux">GGATTGTTTATCAAACACAATTCTAATCTCTTCTCTTATGTATTTTTGTGCACTAGGCGC</span>
+<span class="lnum">     </span><span class="ux">AGTTGTGTAGCAGTTGAGTAATGCTGGTTAGCTGTTAAGGTGGCGTGTTGCAGTGCAGAG</span>
+<span class="lnum">     </span><span class="ux">TGCTTGGCTGTTTCCTGTTTTCTCCCGATTGCTCCTGTGTAAAGATGCCTTGTCGTGCAG</span>
+<span class="lnum">     </span><span class="ux">AAACAAATGGCTGTCCAGTTTATTAAAATGCCTGACAACTGCACTTCCAGTCACCCGGGC</span>
+<span class="lnum">     </span><span class="ux">CTTGCATATAAATAACGGAGCATACAGTGAGCACATCTAGCTGATGATAAATACACCTTT</span>
+<span class="lnum">     </span><span class="ux">TTTTCCCTCTTCCCCCTAAAAATGGTAAATCTGATCATATCTACATGTATGAACTTAACA</span>
+<span class="lnum">     </span><span class="ux">TGGAAAATGTTAAGGAAGCAAATGGTTGTAACTTTGTAAGTACTTATAACATGGTGTATC</span>
+<span class="lnum">     </span><span class="ux">TTTTTGCTTATGAATATTCTGTATTATAACCATTGTTTCTGTAGTTTAATTAAAACATTT</span>
+<span class="lnum">     </span><span class="ux">TCTTGGTGTTAGCTTTTCTCAGAA</span></pre></td></tr>
+<tr class="flank"><td></td><td>3' downstream sequence</td><td></td><td></td><td></td><td></td><td></td><td class="sq" data-flank="dn"></td></tr></tbody></table>
+<p class="note">Start/End are given in transcript orientation (5&prime; &rarr; 3&prime;). Phase &minus; = exon boundary in UTR.
+Intron and flanking sequence can be selected here; selections in this view are genomic (unspliced).</p>
+</section>
+
+<section class="view" id="protein">
+<div class="toolbar"><form class="goto" autocomplete="off"><input type="text" spellcheck="false" placeholder="Go to: c.5946, c.68-7, exon 11, 17:74730197, p.100" aria-label="Go to position"><button type="submit">Go</button><span class="gmsg"></span></form><button class="rtf" title="Download this tab as an RTF file with the colours shown">&#8681; Download RTF</button><span class="hint">Click a base &middot; Shift+click or drag for a range &middot; click a coloured variant to highlight it &middot; select a base and press &#9733; Mark to mark it &middot; Esc clears</span></div>
+<div class="key">
+<b>Exons</b><div><span class="sw">An exon</span> <span class="sw x1">Another exon</span> <span class="sw so">Residue overlaps splice site</span></div>
+<b>Markup</b><div><label><input type="checkbox" checked data-toggle="no-exons" data-target="pre.prot"> Exons</label><label><input type="checkbox" checked data-toggle="no-so" data-target="pre.prot"> Splice-site residues</label><label><input type="checkbox" checked data-toggle="no-lnum" data-target="pre.prot"> Line numbers</label></div>
+</div>
+<pre class="seq prot"><span class="ln"><span class="lnum">   1 </span><span class="bases" data-space="p" data-p="1" data-n="60"><span class="x0">MSYGRPPPDVEGMTSLKVDNLTYRTSPDTLRRVFEKYGRVGDVYIPRDRYTKESRGFAFV</span></span><span class="lnum">   60</span>
+</span><span class="ln"><span class="lnum">  61 </span><span class="bases" data-space="p" data-p="61" data-n="60"><span class="x0">RFHDKRDAEDAMDAMDGAVLDGRELRVQMARYGRPPDSHHSRRGPPPRRYGGGGYGRRSR</span></span><span class="lnum">  120</span>
+</span><span class="ln"><span class="lnum"> 121 </span><span class="bases" data-space="p" data-p="121" data-n="60"><span class="so">S</span><span class="x1">PRRRRRSRSRSRSRSRSRSRSRYSRSKSRSRTRSRSRSTSKSRSARRSKSKSSSVSRSR</span></span><span class="lnum">  180</span>
+</span><span class="ln"><span class="lnum"> 181 </span><span class="bases" data-space="p" data-p="181" data-n="41"><span class="x1">SRSRSRSRSRSPPPVSKRESKSRSRSKSPPKSPEEEGAVSS</span></span>                   <span class="lnum">  221</span>
+</span></pre>
+</section>
+<footer class="prov">Generated 2026-11-10 | MANE v1.5 | NCBI GRCh37 MANE mapping GCF_000001405.25_GRCh37.p13_genomic.gff | genome GRCh37.primary_assembly.genome.fa | variants gnomAD v2.0.1 genomes (GRCh37, via ANNOVAR) (AF &gt;= 0.01%) | GRCh37 (hg19)</footer>
+</main>
+<div id="pickbar" role="region" aria-label="Selected sequence">
+<div class="dtab" title="Click to open/close &middot; drag to resize"><button class="dtoggle" aria-label="Open or close" aria-expanded="true">&#9660;</button>
+<span class="dtitle">Selection</span><span class="dsum"></span><span class="grip" aria-hidden="true">&#8942;&#8942;</span></div>
+<div class="dbody">
+<div class="pane seq"><div class="row"><span class="info"></span></div>
+<div class="row markvar" style="color:#c92a2a;font-size:13px;margin-top:2px"></div><div class="row" style="margin-top:6px">
+<textarea readonly spellcheck="false" aria-label="Selected sequence"></textarea>
+<button class="copy primary">Copy</button>
+<label><input type="checkbox" class="rc"> Reverse complement</label>
+<label title="Adds a header line: gene, transcript, position, build, strand"><input type="checkbox" class="ctx"> Add context</label>
+<button class="mark" hidden title="Mark the selected base in red in every tab and in the RTF (works on any base)">&#9733; Mark this base</button>
+<button class="clear">Clear</button></div>
+<div class="row warns"></div></div>
+</div></div><div id="tip"></div>
+<script type="application/json" id="seqdata">{"transcript_id":"ENST00000359995.10","gene_name":"SRSF2","location":"17:74730197-74733413:-1","chr":"17","strand":"-","tx_s":74730197,"tx_e":74733413,"cds_s":172,"cds_e":837,"flank":50,"embed":1000,"lnw":4,"cdna":"AGTTGTTACTCAGGTGCGCTAGCCTGCGGAGCCCGTCCGTGCTGTTCTGCGGCAAGGCCTTTCCCAGTGTCCCCACGCGGAAGGCAACTGCCTGAGAGGCGCGGCGTCGCACCGCCCAGAGCTGAGGAAGCCGGCGCCAGTTCGCGGGGCTCCGGGCCGCCACTCAGAGCTATGAGCTACGGCCGCCCCCCTCCCGATGTGGAGGGTATGACCTCCCTCAAGGTGGACAACCTGACCTACCGCACCTCGCCCGACACGCTGAGGCGCGTCTTCGAGAAGTACGGGCGCGTCGGCGACGTGTACATCCCGCGGGACCGCTACACCAAGGAGTCCCGCGGCTTCGCCTTCGTTCGCTTTCACGACAAGCGCGACGCTGAGGACGCTATGGATGCCATGGACGGGGCCGTGCTGGACGGCCGCGAGCTGCGGGTGCAAATGGCGCGCTACGGCCGCCCCCCGGACTCACACCACAGCCGCCGGGGACCGCCACCCCGCAGGTACGGGGGCGGTGGCTACGGACGCCGGAGCCGCAGCCCTAGGCGGCGTCGCCGCAGCCGATCCCGGAGTCGGAGTCGTTCCAGGTCTCGCAGCCGATCTCGCTACAGCCGCTCGAAGTCTCGGTCCCGCACTCGTTCTCGATCTCGGTCGACCTCCAAGTCCAGATCCGCACGAAGGTCCAAGTCCAAGTCCTCGTCGGTCTCCAGATCTCGTTCGCGGTCCAGGTCCCGGTCTCGGTCCAGGAGTCCTCCCCCAGTGTCCAAGAGGGAATCCAAATCCAGGTCGCGATCGAAGAGTCCCCCCAAGTCTCCTGAAGAGGAAGGAGCGGTGTCCTCTTAAGAAAATGATGTATCGGCAAGCAGTGTAAACGGAGGACTTGGGGAAAAAGGACCACATAGTCCATCGAAGAAGAGTCCTTGGAACAAGCAACTGGCTATTGAAAAGGTTATTTTGTAACATTTGTCTAACTTTTTACTTGTTTAAGCTTTGCCTCAGTTGGCAAACTTCATTTTATGTGCCATTTTGTTGCTGTTATTCAAATTTCTTGTAATTTAGTGAGGTGAACGACTTCAGATTTCATTATTGGATTTGGATATTTGAGGTAAAATTTCATTTTGTTATATAGTGCTGACTTTTTTTGTTTGAAATTAAACAGATTGGTAACCTAATTTGTGGCCTCCTGACTTTTAAGGAAAACGTGTGCAGCCATTACACACAGCCTAAAGCTGTCAAGAGATTGACTCAGCATTGCCTTCATTCCTTAAAATTAAAAACCTACAAAAGTTGGTGTAAATTTGTATATGTTATTTACCTTCAGATCTAAATGGTAATCTGAACCCAAATTTGTATAAAGACTTTTCAGGTGAAAAGACTTGATTTTTTGAAAGGATTGTTTATCAAACACAATTCTAATCTCTTCTCTTATGTATTTTTGTGCACTAGGCGCAGTTGTGTAGCAGTTGAGTAATGCTGGTTAGCTGTTAAGGTGGCGTGTTGCAGTGCAGAGTGCTTGGCTGTTTCCTGTTTTCTCCCGATTGCTCCTGTGTAAAGATGCCTTGTCGTGCAGAAACAAATGGCTGTCCAGTTTATTAAAATGCCTGACAACTGCACTTCCAGTCACCCGGGCCTTGCATATAAATAACGGAGCATACAGTGAGCACATCTAGCTGATGATAAATACACCTTTTTTTCCCTCTTCCCCCTAAAAATGGTAAATCTGATCATATCTACATGTATGAACTTAACATGGAAAATGTTAAGGAAGCAAATGGTTGTAACTTTGTAAGTACTTATAACATGGTGTATCTTTTTGCTTATGAATATTCTGTATTATAACCATTGTTTCTGTAGTTTAATTAAAACATTTTCTTGGTGTTAGCTTTTCTCAGAA","cds":"ATGAGCTACGGCCGCCCCCCTCCCGATGTGGAGGGTATGACCTCCCTCAAGGTGGACAACCTGACCTACCGCACCTCGCCCGACACGCTGAGGCGCGTCTTCGAGAAGTACGGGCGCGTCGGCGACGTGTACATCCCGCGGGACCGCTACACCAAGGAGTCCCGCGGCTTCGCCTTCGTTCGCTTTCACGACAAGCGCGACGCTGAGGACGCTATGGATGCCATGGACGGGGCCGTGCTGGACGGCCGCGAGCTGCGGGTGCAAATGGCGCGCTACGGCCGCCCCCCGGACTCACACCACAGCCGCCGGGGACCGCCACCCCGCAGGTACGGGGGCGGTGGCTACGGACGCCGGAGCCGCAGCCCTAGGCGGCGTCGCCGCAGCCGATCCCGGAGTCGGAGTCGTTCCAGGTCTCGCAGCCGATCTCGCTACAGCCGCTCGAAGTCTCGGTCCCGCACTCGTTCTCGATCTCGGTCGACCTCCAAGTCCAGATCCGCACGAAGGTCCAAGTCCAAGTCCTCGTCGGTCTCCAGATCTCGTTCGCGGTCCAGGTCCCGGTCTCGGTCCAGGAGTCCTCCCCCAGTGTCCAAGAGGGAATCCAAATCCAGGTCGCGATCGAAGAGTCCCCCCAAGTCTCCTGAAGAGGAAGGAGCGGTGTCCTCTTAA","protein":"MSYGRPPPDVEGMTSLKVDNLTYRTSPDTLRRVFEKYGRVGDVYIPRDRYTKESRGFAFVRFHDKRDAEDAMDAMDGAVLDGRELRVQMARYGRPPDSHHSRRGPPPRRYGGGGYGRRSRSPRRRRRSRSRSRSRSRSRSRSRYSRSKSRSRTRSRSRSTSKSRSARRSKSKSSSVSRSRSRSRSRSRSRSPPPVSKRESKSRSRSKSPPKSPEEEGAVSS*","up":"GCAGCAGCCCAGGGCAGTCAGCTCTCCTCGGGGCGAAGCCACTGACAATCCTGGAGAAAGAAATGAGATGGTGAGTGGAGAAGGCAGATGCAGGAGCCAGGCAGCCAAGCTGTCAACTTCCAGTTCCTGGATCGGAACCCCAGGTTTAGGGCGAAGTTCTCCCCACCGGCAGTTAGGATACTCCTAAGAAGCGATCCGAGTACGGAAGAGCACAACCCCCGGAGAAGCGCCAAGAATTTATCCGCTCCAGGTTGAGGGGCCCACGAAGGGGATTAAAGGGCCAAGTGCCAGCCGCAGCAGCCGGCGCGGCCCCGCCCTCCCAGCCTGACTCACTGCGGCCAGGCGACCGGGTCACCTGACCGCAGCCGCGGCGCCGGCCGCTCGGCCCGCTGGGAAACGTAGTCCCGGGTGGCCTGGCACGCGCAAGCGCTCCGCGGGGAGTCCCCACCGCCAGGACGCAGAGCCGACGGAGCTCTCGGGCTCTGGCGAAAGGGGGTTGGGAAGCGGACTCCGGCGAAGAGCAGTCAGGAACGGCTGGACGGGGCCGAGAGACGACGCAGCGGAGTCTGAGGGGGCCGGGGTCACAGGGAGAGGCAAATGAGGGCAGAAGCACTCTTCAGACGGAGACGGGGCTGACGGCTGAGCAAAAAAGGGGCGTGAACTTGGAGTATTGGCATGAAAAAAAGGTGGGGGCCCAGATGGGGAGCACCTCCTCTTCCTCCTGCCCAATCGCGATCGTCCGGCCTCCCAGGCGGAAAAAGCGTTTCGCGGGCTTTCCAACTGCCCGCTAATTCCGCTCCCCCTCCCTCCAGCCGTGACTCCGCGCTTTTTGGCCCGCCCGCCGGGCTGTGCGCAGGCGCTTCGGGTAGGGGCGGGGCGCGCGGCAGGGTCGTTACGAAGCGGGGCGCGGTGGGCCAATCAGAAGGTTTCATTTCCGGGTGGCGCGGGCGCCATTTTGTGAGGAGCGATATAAACGGGCGCAGAGGCCGGCTGCCCGCCC","dn":"TATGTCTCGGTCTTTTTTTCCCCCATTTATTTGAAGGACCTATTCAATTTTGTGATTGTGGCTGACTGCATAGTATGGAAGTGGAATGTTTAGTGCCTATCATTTCCTAAGTTAAAGTGGAAATGCCAGTTGAACACCTAAAAGCAATGCTTTAAGTGGCACTTTTCTTGAGGTTGTGATACCCCCTTCTCAACCTAATTTATATCCTATTTAATGACTAAGGAACAATCCAAGTACTTGTAATACGTATTTTAATTTTTGTTTCATATGAGTTTAAGTGTTGTCTAGGTGACATCAAAATCTAAGGCAAACAGACTTGACCATCTTCAGACCCACTGCATTCTCAAGCTGAAGTGGTCTGCTCATAGTTTGTGTGCCAGGTTGCTCATCAGTATTGATACTGTCCCAGAACAGGTTGTAGGTATAATTCAGAGACTGTCCTTTGCAAAGGAAATGACCAGCATTTCAACTGTATGTCTTCCTGGAAGGGTAGATTCTGCTATATCTTCTTTGTCTGCATCAAAAGACTCAAGAGGAATGTGGACACATTTCATATCCCATTTGTAGAGTAAAGCTTCAAGTGACCAGTCAGCACTTAAAAAAAAAAAGTTGTTCTTTTAAAGTCATGCCTTTTCTGTTTTGCTTCAGATGTATTCTATTCTTAAATTATGTATCGCATGGGTAGGGTAGAGTAAGGCTTAAGTTACATATAAAAAGTAAGGGTCATCCATACTTGCCTCCTAACTTGATAAGTAGACCACAATTGGACCTTGGGATTCTTGTGCATCAAAAAATATATTGTAGCCAAAATGTCTTCAAAATCTGAGGAGAAAGGATTTATGAATAGATTTTCATATAGCATCACTGGCCAAATGTACTATTGAGCCAAAAAAGCTTACCTTCTGGTTCAAAGAACACATCAGATGCAAGGATAATATCTTGTGGTGGTAGAGCCAGAAGATCCCAAGATATATGACCCCATGTTAGTCCTACCACCTGC","has_variants":true,"build":"GRCh37 (hg19)","prov":"Generated 2026-11-10 | MANE v1.5 | NCBI GRCh37 MANE mapping GCF_000001405.25_GRCh37.p13_genomic.gff | genome GRCh37.primary_assembly.genome.fa | variants gnomAD v2.0.1 genomes (GRCh37, via ANNOVAR) (AF >= 0.01%) | GRCh37 (hg19)","tname":"NM_001195427.2","mane":"","refdiff":[],"lendiff":false,"bins":[[0.05,"#ff0000","#ffffff","&ge;5%"],[0.01,"#ff7f50","#000000","1&ndash;5%"],[0.001,"#ffd700","#000000","0.1&ndash;1%"],[0.0001,"#76ee00","#000000","0.01&ndash;0.1%"]],"exons":[["Exon 1","AGTTGTTACTCAGGTGCGCTAGCCTGCGGAGCCCGTCCGTGCTGTTCTGCGGCAAGGCCTTTCCCAGTGTCCCCACGCGGAAGGCAACTGCCTGAGAGGCGCGGCGTCGCACCGCCCAGAGCTGAGGAAGCCGGCGCCAGTTCGCGGGGCTCCGGGCCGCCACTCAGAGCTATGAGCTACGGCCGCCCCCCTCCCGATGTGGAGGGTATGACCTCCCTCAAGGTGGACAACCTGACCTACCGCACCTCGCCCGACACGCTGAGGCGCGTCTTCGAGAAGTACGGGCGCGTCGGCGACGTGTACATCCCGCGGGACCGCTACACCAAGGAGTCCCGCGGCTTCGCCTTCGTTCGCTTTCACGACAAGCGCGACGCTGAGGACGCTATGGATGCCATGGACGGGGCCGTGCTGGACGGCCGCGAGCTGCGGGTGCAAATGGCGCGCTACGGCCGCCCCCCGGACTCACACCACAGCCGCCGGGGACCGCCACCCCGCAGGTACGGGGGCGGTGGCTACGGACGCCGGAGCCGCAG",74732881,74733413,1,533,1,533],["Exon 2","CCCTAGGCGGCGTCGCCGCAGCCGATCCCGGAGTCGGAGTCGTTCCAGGTCTCGCAGCCGATCTCGCTACAGCCGCTCGAAGTCTCGGTCCCGCACTCGTTCTCGATCTCGGTCGACCTCCAAGTCCAGATCCGCACGAAGGTCCAAGTCCAAGTCCTCGTCGGTCTCCAGATCTCGTTCGCGGTCCAGGTCCCGGTCTCGGTCCAGGAGTCCTCCCCCAGTGTCCAAGAGGGAATCCAAATCCAGGTCGCGATCGAAGAGTCCCCCCAAGTCTCCTGAAGAGGAAGGAGCGGTGTCCTCTTAAGAAAATG",74732236,74732546,534,844,868,1178],["Exon 3","ATGTATCGGCAAGCAGTGTAAACGGAGGACTTGGGGAAAAAGGACCACATAGTCCATCGAAGAAGAGTCCTTGGAACAAGCAACTGGCTATTGAAAAGGTTATTTTGTAACATTTGTCTAACTTTTTACTTGTTTAAGCTTTGCCTCAGTTGGCAAACTTCATTTTATGTGCCATTTTGTTGCTGTTATTCAAATTTCTTGTAATTTAGTGAGGTGAACGACTTCAGATTTCATTATTGGATTTGGATATTTGAGGTAAAATTTCATTTTGTTATATAGTGCTGACTTTTTTTGTTTGAAATTAAACAGATTGGTAACCTAATTTGTGGCCTCCTGACTTTTAAGGAAAACGTGTGCAGCCATTACACACAGCCTAAAGCTGTCAAGAGATTGACTCAGCATTGCCTTCATTCCTTAAAATTAAAAACCTACAAAAGTTGGTGTAAATTTGTATATGTTATTTACCTTCAGATCTAAATGGTAATCTGAACCCAAATTTGTATAAAGACTTTTCAGGTGAAAAGACTTGATTTTTTGAAAGGATTGTTTATCAAACACAATTCTAATCTCTTCTCTTATGTATTTTTGTGCACTAGGCGCAGTTGTGTAGCAGTTGAGTAATGCTGGTTAGCTGTTAAGGTGGCGTGTTGCAGTGCAGAGTGCTTGGCTGTTTCCTGTTTTCTCCCGATTGCTCCTGTGTAAAGATGCCTTGTCGTGCAGAAACAAATGGCTGTCCAGTTTATTAAAATGCCTGACAACTGCACTTCCAGTCACCCGGGCCTTGCATATAAATAACGGAGCATACAGTGAGCACATCTAGCTGATGATAAATACACCTTTTTTTCCCTCTTCCCCCTAAAAATGGTAAATCTGATCATATCTACATGTATGAACTTAACATGGAAAATGTTAAGGAAGCAAATGGTTGTAACTTTGTAAGTACTTATAACATGGTGTATCTTTTTGCTTATGAATATTCTGTATTATAACCATTGTTTCTGTAGTTTAATTAAAACATTTTCTTGGTGTTAGCTTTTCTCAGAA",74730197,74731240,845,1888,2174,3217]],"introns":[[534,867,334,"GTAAACGGGGCTGAGGGGACCGCGGGAGGCGGGGCGGGGCGCGCGGGAGGCCCGGGCGACCTCACAAAGGTCCGCGGCGAAGCACGTGGTGCGGGCCCGGACGGGGCGGGGGTGCACGCCGCGTCTCGCGACCCTCCGGCCACCCCGCGAGCTTCCGCCGTCTGCGACCCGGGAGTGGCCGGGGTGTGGGCGGCGCGGGGCGGAGGACCCCGCCTCGCGACTGGGGAAATGGCGTCTGGCGGCGAGATAATGGCGGCCTGGGCGGGAGCGCGCGGGCGGGGCCGGCCCCGCTGCCTGGAATTAACCCCGCTGTGCTTGCTCGTCCCGCCCGCAG",""],[1179,2173,995,"GTAATGTCTGGGAATCCGAGACACATAACCCTAATTCATAAATGGGATTTGGGGTAGGTCTTTTTGAGTCGTGTTAATGTAAGAATGACTCCTATCATTAGGAGTGCTGCTCGGAGGTTACTCACCTTTGGGAGTAATACTGAAGAGAGGGGTCTGCAGAAAGGATGTGTATGAAGCTTAGATAATAATGGCTGTTTCGTAAACTGTTTGAGACCTATTAATGAAAATGACTATTTCTTGCTGTTTTTATCCAACGTCTGCATTTTCCCCCTTTAAAGCTGCGGTCTCCTGTTTGATAAAAGAATATTGGCCAGTATTGCAGATTTTAACTGATTTGGCTGATCCTCCAGGGACCAGTTTCTGTGGGCGTGTATTGGAGCAGGTTTGTCTTTAAATGTTAAAGATGCACTATCCTCTTAGAGAAACAATCAGTTCAACTATTGTTGTACTGACTGGGACTTCATATTCTAATGGATGTGGCAAAAGAATTGCAATAAGAAGCAGTGAACATTTGGAACCCCAAAAGAAAGTTACAGGTATTGCACTGGGTGGGGAAAGGATAGTGTGTCTTTAACTCTTAAATTGTTTGGTCCTATTTTTTAAAAAGGAAAGGGCCCTAAGTAGCTCAGATATTAAAGTAGTATTCTCAATTACCAAATGTTTCATTTGAAACAATTTATCTTAATGAAATATAGACCAATTCTCTGATCTCGAGTTGTTTTTGTTTGGATACAGCCCTTTTTTTTTTCTTTTTTTTTCTTCCCCTTACCTTTCTTCACCTTGGTTATTTGGCCAGGAATACGTAAATTCAAACTTGTACATGCTGATGGTAGCCTTTGTGAAATTTTCCTAATTGGGCCTTTTAAAAACATGGCTGGGTGGAACATTTCTGTACCCTACTGGTTTGACCAGAGCCTTAGTAAGTACGTGCCTGAAACTGAAACCATGTGCACTTTAATGGAAGGTAAGCTGAACTTCTTTCTTTTCAAACCTAG",""]],"variants":[[4184,1,"17-74729230-T-G",0.0009,null],[4173,1,"17-74729241-T-A",0.0002,null],[4103,1,"17-74729311-G-A",0.0007,null],[4091,1,"17-74729323-A-AT",0.0005,null],[4091,1,"17-74729323-A-AT",0.0005,null],[4052,1,"17-74729362-C-T",0.0006,null],[4014,1,"17-74729400-A-G",0.0001,null],[3996,1,"17-74729418-G-C",0.0005,null],[3980,1,"17-74729434-T-C",0.0001,null],[3971,1,"17-74729443-A-G",0.0001,null],[3895,1,"17-74729519-T-G",0.0008,null],[3892,1,"17-74729522-G-A",0.0002,null],[3826,1,"17-74729588-C-CT",0.0469,null],[3826,1,"17-74729588-C-CT",0.0469,null],[3825,2,"17-74729588-CT-C",0.0007,null],[3825,1,"17-74729588-CT-C",0.0007,null],[3723,1,"17-74729691-G-A",0.0043,null],[3650,1,"17-74729764-T-C",0.0053,null],[3622,1,"17-74729792-G-A",0.0004,null],[3614,1,"17-74729800-C-T",0.0005,null],[3545,1,"17-74729869-G-T",0.0071,null],[3489,1,"17-74729925-C-T",0.0001,null],[3486,1,"17-74729928-A-C",0.0005,null],[3460,1,"17-74729954-T-G",0.0002,null],[3402,1,"17-74730012-G-C",0.0018,null],[3360,1,"17-74730054-T-C",0.0005,null],[3267,1,"17-74730147-A-G",0.0005,null],[3261,1,"17-74730153-A-C",0.0454,null],[3256,1,"17-74730158-G-A",0.0001,null],[3241,2,"17-74730172-TG-T",0.0516,null],[3241,1,"17-74730172-TG-T",0.0516,null],[3226,1,"17-74730188-C-T",0.0512,null],[3068,6,"17-74730341-TGTTAA-T",0.0005,null],[3068,5,"17-74730341-TGTTAA-T",0.0005,null],[3022,1,"17-74730392-G-T",0.0005,null],[2995,1,"17-74730419-A-T",0.0002,null],[2922,1,"17-74730492-A-AT",0.0003,null],[2922,1,"17-74730492-A-AT",0.0003,null],[2709,2,"17-74730704-CA-C",0.0003,null],[2709,1,"17-74730704-CA-C",0.0003,null],[2688,2,"17-74730725-CT-C",0.0002,null],[2688,1,"17-74730725-CT-C",0.0002,null],[2675,1,"17-74730739-T-C",0.0002,null],[2645,1,"17-74730769-T-C",0.0001,null],[2571,1,"17-74730843-T-C",0.9016,null],[2514,3,"17-74730898-TAA-T",0.0004,null],[2514,2,"17-74730898-TAA-T",0.0004,null],[2457,5,"17-74730953-AAGTC-A",0.0005,null],[2457,4,"17-74730953-AAGTC-A",0.0005,null],[2317,1,"17-74731097-G-A",0.0004,null],[2316,1,"17-74731098-C-T",0.0002,null],[2210,1,"17-74731204-T-A",0.0003,null],[2156,3,"17-74731256-AAG-A",0.0001,null],[2156,2,"17-74731256-AAG-A",0.0001,null],[2031,1,"17-74731383-T-C",0.0002,null],[1931,11,"17-74731473-GGAAGAAAAAA-G",0.0019,null],[1931,10,"17-74731473-GGAAGAAAAAA-G",0.0019,null],[1937,1,"17-74731477-G-A",0.0036,null],[1937,1,"17-74731477-G-GA",0.0003,null],[1937,1,"17-74731477-G-GA",0.0003,null],[1927,4,"17-74731484-AAAG-A",0.0002,null],[1927,3,"17-74731484-AAAG-A",0.0002,null],[1927,1,"17-74731487-G-A",0.002,null],[1927,1,"17-74731487-G-GA",0.0353,null],[1927,1,"17-74731487-G-GA",0.0353,null],[1926,2,"17-74731487-GA-G",0.0002,null],[1927,1,"17-74731487-G-GAA",0.0009,null],[1927,1,"17-74731487-G-GAA",0.0009,null],[1926,1,"17-74731487-GA-G",0.0002,null],[1877,1,"17-74731537-T-G",0.0007,null],[1852,1,"17-74731562-T-C",0.0013,null],[1848,1,"17-74731566-T-A",0.0002,null],[1275,1,"17-74732139-T-C",0.0009,null],[1270,1,"17-74732144-G-A",0.0003,null],[1209,1,"17-74732205-G-A",0.0049,null],[1129,1,"17-74732285-A-G",0.0001,null],[1062,1,"17-74732352-C-A",0.0002,null],[907,1,"17-74732507-A-G",0.9916,null],[883,1,"17-74732531-G-A",0.0004,null],[863,1,"17-74732551-G-A",0.0004,null],[816,1,"17-74732598-G-A",0.0021,null],[751,1,"17-74732663-G-A",0.0001,null],[747,1,"17-74732667-G-A",0.0001,null],[694,1,"17-74732720-A-G",0.0002,null],[653,1,"17-74732761-G-T",0.0003,null],[629,1,"17-74732785-G-T",0.0035,null],[589,1,"17-74732825-C-T",0.0002,null],[578,1,"17-74732836-C-T",0.0051,null],[354,1,"17-74733060-G-A",0.0003,null],[339,1,"17-74733075-G-A",0.0005,null],[315,1,"17-74733099-G-A",0.8039,null],[252,1,"17-74733162-G-A",0.0002,null],[246,1,"17-74733168-G-A",0.0285,null],[216,1,"17-74733198-G-A",0.0013,null],[125,1,"17-74733289-T-C",0.0001,null],[104,1,"17-74733310-C-T",0.0101,null],[98,1,"17-74733316-C-T",0.0001,null],[91,1,"17-74733323-G-A",0.0006,null],[84,1,"17-74733330-C-T",0.0003,null],[83,1,"17-74733331-C-T",0.0002,null],[79,1,"17-74733335-C-T",0.0004,null],[61,1,"17-74733353-A-G",0.0002,null],[54,1,"17-74733360-T-C",0.0002,null],[49,1,"17-74733365-C-T",0.0513,null],[38,1,"17-74733376-G-A",0.0024,null],[37,1,"17-74733377-G-A",0.0001,null],[37,1,"17-74733377-G-T",0.0004,null],[34,1,"17-74733380-G-T",0.0004,null],[34,1,"17-74733380-G-A",0.0005,null],[33,1,"17-74733381-G-A",0.0051,null],[33,1,"17-74733381-G-T",0.0003,null],[29,1,"17-74733385-C-T",0.0001,null],[25,1,"17-74733389-A-G",0.0019,null],[24,1,"17-74733390-G-A",0.0005,null],[22,1,"17-74733392-C-T",0.0002,null],[18,1,"17-74733396-C-T",0.0001,null],[17,1,"17-74733397-G-A",0.0006,null],[11,1,"17-74733403-G-A",0.4032,null],[11,1,"17-74733403-G-C",0.0002,null],[1,1,"17-74733413-T-TGGGC",0.0002,null],[1,1,"17-74733413-T-TGGGC",0.0002,null],[-1,1,"17-74733415-G-A",0.0001,null],[-4,1,"17-74733418-G-A",0.0002,null],[-13,1,"17-74733427-G-T",0.0009,null],[-21,1,"17-74733435-G-C",0.0009,null],[-25,1,"17-74733439-G-A",0.0004,null],[-32,1,"17-74733446-T-C",0.0001,null],[-34,1,"17-74733448-G-T",0.0001,null],[-95,1,"17-74733509-C-T",0.0417,null],[-104,1,"17-74733518-G-T",0.0284,null],[-126,1,"17-74733540-C-T",0.0093,null],[-268,1,"17-74733682-C-A",0.0002,null],[-286,1,"17-74733700-A-G",0.0079,null],[-329,1,"17-74733743-A-G",0.0026,null],[-335,1,"17-74733749-C-T",0.0005,null],[-366,1,"17-74733780-A-T",0.0001,null],[-467,1,"17-74733881-C-T",0.0001,null],[-488,1,"17-74733902-G-A",0.0021,null],[-529,1,"17-74733943-T-TC",0.0004,null],[-529,1,"17-74733943-T-TC",0.0004,null],[-549,1,"17-74733963-G-A",0.0003,null],[-567,1,"17-74733981-G-C",0.9017,null],[-585,1,"17-74733999-A-C",0.0018,null],[-588,1,"17-74734002-C-T",0.9015,null],[-590,1,"17-74734004-A-G",0.0002,null],[-609,1,"17-74734023-A-C",0.0006,null],[-611,1,"17-74734025-C-G",0.0002,null],[-660,1,"17-74734074-G-A",0.0002,null],[-679,1,"17-74734093-G-GGGA",0.0284,null],[-679,1,"17-74734093-G-GGGA",0.0284,null],[-718,1,"17-74734132-G-A",0.0024,null],[-722,1,"17-74734136-C-T",0.0009,null],[-763,1,"17-74734177-A-G",0.0294,null],[-778,1,"17-74734192-C-G",0.0002,null],[-785,2,"17-74734198-GT-G",0.0012,null],[-785,1,"17-74734198-GT-G",0.0012,null],[-785,1,"17-74734199-T-C",0.0001,null],[-809,1,"17-74734223-C-G",0.0006,null],[-821,1,"17-74734235-A-G",0.0012,null],[-884,1,"17-74734298-T-C",0.0001,null],[-896,1,"17-74734310-C-T",0.0001,null],[-909,1,"17-74734323-G-A",0.9016,null],[-938,1,"17-74734352-T-G",0.0007,null],[-947,1,"17-74734361-C-T",0.0001,null],[-968,1,"17-74734382-C-T",0.0004,null]]}</script>
+<script>
+(function(){
+"use strict";
+var D=JSON.parse(document.getElementById("seqdata").textContent);
+var $=function(s,r){return (r||document).querySelector(s)};
+var $$=function(s,r){return [].slice.call((r||document).querySelectorAll(s))};
+var HL=!!(window.CSS&&CSS.highlights&&window.Highlight);
+var fmt=function(n){return n.toLocaleString("en-US")};
+var isBase=function(ch){return /[A-Za-z*]/.test(ch)};   // "*" = stop / untranslated Sec residue
+function revcomp(s){var m={A:"T",C:"G",G:"C",T:"A",N:"N",a:"t",c:"g",g:"c",t:"a",n:"n"};
+  return s.split("").reverse().map(function(x){return m[x]||x}).join("")}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]})}
+
+/* ---------- coordinates ----------
+   c = cDNA position, u = position along the unspliced transcript
+   (u=1 at the transcript 5' end, <1 upstream, >L downstream) */
+var L=D.tx_e-D.tx_s+1, NC=D.cdna.length;
+var EX=D.exons.map(function(e){return{id:e[0],seq:e[1],gs:e[2],ge:e[3],cs:e[4],ce:e[5],us:e[6],ue:e[7]}});
+var IN=D.introns.map(function(i){return{us:i[0],ue:i[1],len:i[2],head:i[3],tail:i[4]}});
+function exonU(u){for(var i=0;i<EX.length;i++)if(u>=EX[i].us&&u<=EX[i].ue)return i;return -1}
+function exonC(c){for(var i=0;i<EX.length;i++)if(c>=EX[i].cs&&c<=EX[i].ce)return i;return -1}
+function u2c(u){var i=exonU(u);return i<0?null:EX[i].cs+(u-EX[i].us)}
+function c2u(c){var i=exonC(c);return i<0?null:EX[i].us+(c-EX[i].cs)}
+function u2g(u){return D.strand==="-"?D.tx_e-u+1:D.tx_s+u-1}
+function cdotC(c){if(D.cds_s===null)return "n."+c;
+  if(c<D.cds_s)return "c.-"+(D.cds_s-c); if(c>D.cds_e)return "c.*"+(c-D.cds_e); return "c."+(c-D.cds_s+1)}
+function cdotU(u){
+  var c=u2c(u); if(c!==null)return cdotC(c);
+  if(u<1)return D.cds_s===null?"n.-"+(1-u):"c.-"+(D.cds_s-u);
+  if(u>L)return D.cds_s===null?"n.*"+(u-L):"c.*"+(NC+(u-L)-D.cds_e);
+  for(var i=0;i<EX.length-1;i++)if(u>EX[i].ue&&u<EX[i+1].us){
+    var d1=u-EX[i].ue,d2=EX[i+1].us-u;
+    return d1<=d2?cdotC(EX[i].ce)+"+"+d1:cdotC(EX[i+1].cs)+"-"+d2}
+  return "?";
+}
+function locU(u){var i=exonU(u);if(i>=0)return "exon "+(i+1);if(u<1)return "5′ flank";if(u>L)return "3′ flank";
+  for(var k=0;k<EX.length-1;k++)if(u>EX[k].ue&&u<EX[k+1].us)return "intron "+(k+1);return "?"}
+function gtxt(ua,ub){var a=u2g(ua),b=u2g(ub);return D.chr+":"+(a===b?fmt(a):fmt(Math.min(a,b))+"-"+fmt(Math.max(a,b)))+" ("+D.strand+")"}
+
+/* unspliced sequence from the embedded segments (null if not embedded) */
+var SEG=[{u0:1-D.up.length,s:D.up}];
+EX.forEach(function(e){SEG.push({u0:e.us,s:e.seq})});
+IN.forEach(function(i){SEG.push({u0:i.us,s:i.head});if(i.tail)SEG.push({u0:i.ue-i.tail.length+1,s:i.tail})});
+SEG.push({u0:L+1,s:D.dn});
+SEG.sort(function(a,b){return a.u0-b.u0});   // 5'->3' order, so intron+exon selections read correctly
+function useq(a,b){var out="",got=0;
+  SEG.forEach(function(g){var s=Math.max(a,g.u0),e=Math.min(b,g.u0+g.s.length-1);
+    if(s<=e){out+=g.s.slice(s-g.u0,e-g.u0+1);got+=e-s+1}});
+  return got===b-a+1?out.toUpperCase():null}
+
+/* ---------- variants ---------- */
+var VAR=D.variants.map(function(v){return{u0:v[0],u1:v[0]+v[1]-1,label:v[2],af:v[3],id:v[4]}})
+  .sort(function(a,b){return a.u0-b.u0});
+/* AF bands (from R): [[min AF, background, text colour, label], ...] highest first */
+var BINS=D.bins;
+var vmin=$("#vmin")?+$("#vmin").value:0, vshow=false;                    // off until the variant checkbox is ticked
+function vbin(af){for(var i=0;i<BINS.length;i++)if(af>=BINS[i][0])return i;return BINS.length-1}
+function vvis(v){return vshow&&v.af>=vmin}
+function varsIn(ua,ub){return VAR.filter(function(v){return vvis(v)&&v.u1>=ua&&v.u0<=ub})}
+function afTxt(af){return af>=0.01?(af*100).toFixed(2)+"%":af>=0.0001?(af*100).toFixed(3)+"%":af.toExponential(2)}
+
+/* ---------- tabs ---------- */
+function show(id){
+  $$("section.view").forEach(function(s){s.classList.toggle("on",s.id===id)});
+  $$("nav.tabs button").forEach(function(b){b.setAttribute("aria-selected",b.dataset.view===id)});
+}
+$$("nav.tabs button").forEach(function(b){
+  b.addEventListener("click",function(){
+    if(b.dataset.view!==currentView())clearVariantColours();
+    show(b.dataset.view);history.replaceState(null,"","#"+b.dataset.view);
+    if(typeof paintSel==="function")paintSel()})});
+/* switching tabs unticks the variant box and clears its colours; some browsers
+   left the colours on the wrong elements after a tab change */
+function clearVariantColours(){var c=document.getElementById("vshow");if(!c||!c.checked)return;
+  c.checked=false;c.dispatchEvent(new Event("change"))}
+function fromHash(){var h=location.hash.slice(1);show((h==="exons"||h==="protein")&&document.getElementById(h)?h:"cdna")}
+function currentView(){var s=$("section.view.on");return s?s.id:"cdna"}
+fromHash(); window.addEventListener("hashchange",fromHash);
+
+/* ---------- striping (white / grey, recomputed when rows are hidden) ---------- */
+function restripe(){var k=0;$$("table.exons tbody tr").forEach(function(r){
+  if(r.offsetParent===null&&getComputedStyle(r).display==="none")return; r.classList.toggle("alt",(k++)%2===1)})}
+
+/* ---------- markup toggles ---------- */
+$$("input[data-toggle]").forEach(function(c){
+  var t=$(c.dataset.target);
+  t.classList.toggle(c.dataset.toggle,!c.checked);   // browsers may restore an unticked box on reload / Back
+  c.addEventListener("change",function(){t.classList.toggle(c.dataset.toggle,!c.checked);restripe()})});
+
+/* ---------- helpers ---------- */
+function wrap(s){return s.replace(/(.{60})/g,"$1\n").replace(/\n$/,"")}
+function download(name,text,type){var a=document.createElement("a");
+  a.href=URL.createObjectURL(new Blob([text],{type:type||"text/plain"}));a.download=name;
+  document.body.appendChild(a);a.click();a.remove()}
+
+/* ---------- Exons view: intron / flank cells (dropdown) ---------- */
+var LPAD='<span class="lnum">'+" ".repeat((D.lnw||4)+1)+"</span>";
+function padLines(html){return LPAD+html.replace(/\n/g,"\n"+LPAD)}
+function box(seq,p,cls){return '<span class="bases '+cls+'" data-space="g" data-p="'+p+'" data-n="'+seq.length+'">'+wrap(seq.toLowerCase())+"</span>"}
+var DOTS="..........";
+function renderFlex(n){
+  var m=Math.min(Math.max(D.flank,n),D.up.length);
+  var up=$('td[data-flank="up"]'),dn=$('td[data-flank="dn"]');
+  var su=D.up.slice(D.up.length-m), sd=D.dn.slice(0,Math.min(m,D.dn.length));
+  if(up)up.innerHTML='<pre class="seq">'+padLines(DOTS+(m>50?"\n":"")+box(su,1-su.length,"fl"))+"</pre>";
+  if(dn)dn.innerHTML='<pre class="seq">'+padLines(box(sd,L+1,"fl")+(m>50?"\n":"")+DOTS)+"</pre>";
+  $$("td[data-intron]").forEach(function(td){
+    var it=IN[+td.dataset.intron], html;
+    if(it.len<=2*n){html=box(useq(it.us,it.ue)||"",it.us,"in")}
+    else{var h=useq(it.us,it.us+n-1),t=useq(it.ue-n+1,it.ue),br=n>25?"\n":"";
+      html=box(h,it.us,"in")+br+'<span class="in">'+DOTS+"</span>"+br+box(t,it.ue-n+1,"in")}
+    td.innerHTML='<pre class="seq">'+padLines(html)+"</pre>";
+  });
+  paintVariants();paintSel();
+}
+var isel=$("#intronsize");
+if(isel)isel.addEventListener("change",function(){renderFlex(+isel.value)});
+
+/* ---------- highlighting helpers ---------- */
+var LC=new WeakMap();
+function letters(cont){var a=LC.get(cont);if(a)return a;a=[];
+  var w=document.createTreeWalker(cont,NodeFilter.SHOW_TEXT),n;
+  while((n=w.nextNode()))for(var i=0;i<n.data.length;i++)if(isBase(n.data[i]))a.push([n,i]);
+  LC.set(cont,a);return a}
+function addRange(hl,cont,k0,k1){var a=letters(cont);if(!a[k0]||!a[k1])return;
+  var r=document.createRange();r.setStart(a[k0][0],a[k0][1]);r.setEnd(a[k1][0],a[k1][1]+1);hl.add(r)}
+/* intervals {c:[[a,b]...],u:[[a,b]...],p:[[a,b]...]} painted onto every
+   container of the matching space (c = cDNA, g/u = genomic, p = protein) */
+function spaceKey(sp){return sp==="g"?"u":sp}
+function paint(hl,iv){
+  $$(".bases").forEach(function(cont){
+    var list=iv[spaceKey(cont.dataset.space)];if(!list||!list.length)return;
+    var p=+cont.dataset.p,n=+cont.dataset.n,q=p+n-1;
+    for(var j=0;j<list.length;j++){var a=Math.max(list[j][0],p),b=Math.min(list[j][1],q);
+      if(a<=b)addRange(hl,cont,a-p,b-p)}
+  });
+}
+function cFromU(ua,ub){var o=[];EX.forEach(function(e){var a=Math.max(ua,e.us),b=Math.min(ub,e.ue);
+  if(a<=b)o.push([e.cs+a-e.us,e.cs+b-e.us])});return o}
+function uFromC(ca,cb){var o=[];EX.forEach(function(e){var a=Math.max(ca,e.cs),b=Math.min(cb,e.ce);
+  if(a<=b)o.push([e.us+a-e.cs,e.us+b-e.cs])});return o}
+/* residues (protein positions) whose codons overlap cDNA interval [ca,cb] */
+var NAA=D.cds_s===null?0:D.protein.replace(/\*$/,"").length;
+var NP=D.cds_s===null?0:D.protein.length;      // residues incl. the final stop "*" (shown on the cDNA tab only)
+function pFromC(ca,cb){if(D.cds_s===null)return [];
+  var a=Math.max(ca,D.cds_s),b=Math.min(cb,D.cds_s+3*NP-1);if(a>b)return [];
+  return [[Math.floor((a-D.cds_s)/3)+1,Math.floor((b-D.cds_s)/3)+1]]}
+function pFromCs(cs){var o=[];cs.forEach(function(x){pFromC(x[0],x[1]).forEach(function(y){o.push(y)})});return o}
+function cOfP(a,b){return [D.cds_s+3*(a-1),D.cds_s+3*b-1]}
+function ivOf(s){
+  if(s.space==="c")return{c:[[s.a,s.b]],u:uFromC(s.a,s.b),p:pFromC(s.a,s.b)};
+  if(s.space==="p"){var c=cOfP(s.a,s.b);return{p:[[s.a,s.b]],c:[c],u:uFromC(c[0],c[1])}}
+  var cs=cFromU(s.a,s.b);return{u:[[s.a,s.b]],c:cs,p:pFromCs(cs)}}
+/* u-range a mouse position stands for (a residue stands for its codon) */
+function uRangeOf(p){if(p.space==="c"){var u=c2u(p.pos);return [u,u]}
+  if(p.space==="p"){var c=cOfP(p.pos,p.pos),us=uFromC(c[0],c[1]);return [us[0][0],us[us.length-1][1]]}
+  return [p.pos,p.pos]}
+/* Highlights are kept as one persistent object per name and cleared/refilled;
+   an empty one is removed from the registry. Some browsers do not repaint
+   when a highlight is merely replaced, which left colours behind. */
+var REG={};
+function setHL(name,hl,prio){if(!HL)return;
+  var h=REG[name];if(!h){h=REG[name]=new Highlight();h.priority=prio}
+  h.clear();hl.forEach(function(r){h.add(r)});
+  if(h.size){if(CSS.highlights.get(name)!==h)CSS.highlights.set(name,h)}else CSS.highlights.delete(name)}
+function nudgeRepaint(){var m=$("main");m.classList.toggle("hlr");
+  requestAnimationFrame(function(){m.classList.toggle("hlr")})}
+
+function paintVariants(){
+  if(HL){
+    var hs=BINS.map(function(){return new Highlight()}),iv=BINS.map(function(){return{c:[],u:[],p:[]}});
+    VAR.forEach(function(v){if(!vvis(v))return;var b=vbin(v.af),cs=cFromU(v.u0,v.u1);
+      iv[b].u.push([v.u0,v.u1]);cs.forEach(function(x){iv[b].c.push(x)});pFromCs(cs).forEach(function(x){iv[b].p.push(x)})});
+    hs.forEach(function(h,i){paint(h,iv[i]);setHL("v"+i,h,3)});
+    nudgeRepaint();
+  }
+  var cnt=$("#vcount");if(cnt)cnt.textContent=vshow?VAR.filter(vvis).length+" shown of "+VAR.length:VAR.length+" in this locus";
+}
+
+/* ---------- variant controls + tooltip ---------- */
+var vs=$("#vshow"),vm=$("#vmin");
+if(vs)vs.addEventListener("change",function(){vshow=vs.checked;$(".varbar").classList.toggle("off",!vshow);paintVariants();updateBar()});
+if(vm)vm.addEventListener("change",function(){vmin=+vm.value;paintVariants();updateBar()});
+var tip=$("#tip"),raf=0;
+document.addEventListener("mousemove",function(e){
+  if(raf)return;raf=requestAnimationFrame(function(){raf=0;
+    var p=posAt(e.clientX,e.clientY),html="";
+    if(p&&VAR.length){var ur=uRangeOf(p),u=ur[0];
+      var vv=varsIn(ur[0],ur[1]);
+      if(vv.length)html=vv.map(function(v){var b=BINS[vbin(v.af)];
+        return "<span class=\"sq\" style=\"background:"+b[1]+"\"></span><b>"+esc(v.label)+"</b>"+(v.id?" &middot; "+esc(v.id):"")+
+        "<br>AF <span class=\"af\">"+afTxt(v.af)+"</span> ("+b[3]+") &middot; "+cdotU(v.u0)+" &middot; "+locU(v.u0)+
+        (pFromCs(cFromU(v.u0,v.u1)).length?" &middot; aa "+pFromCs(cFromU(v.u0,v.u1))[0][0]:"")}).join("<hr style=\"border:0;border-top:1px solid #556;margin:4px 0\">")}
+    if(html){tip.innerHTML=html;tip.style.display="block";
+      var x=e.clientX+14,y=e.clientY+16;if(x+370>innerWidth)x=e.clientX-370;tip.style.left=x+"px";tip.style.top=y+"px"}
+    else tip.style.display="none";
+  })});
+
+/* ---------- mouse -> position ---------- */
+function caret(x,y){
+  if(document.caretPositionFromPoint){var p=document.caretPositionFromPoint(x,y);return p&&{node:p.offsetNode,offset:p.offset}}
+  if(document.caretRangeFromPoint){var r=document.caretRangeFromPoint(x,y);return r&&{node:r.startContainer,offset:r.startOffset}}
+  return null}
+function posAt(x,y){
+  var c=caret(x,y);if(!c||c.node.nodeType!==3)return null;
+  var cont=c.node.parentElement&&c.node.parentElement.closest(".bases");if(!cont)return null;
+  var d=c.node.data,off=c.offset;
+  var hit=function(o){if(o<0||o>=d.length||!isBase(d[o]))return false;
+    var r=document.createRange();r.setStart(c.node,o);r.setEnd(c.node,o+1);
+    var b=r.getBoundingClientRect();return x>=b.left-0.5&&x<=b.right+0.5&&y>=b.top-1&&y<=b.bottom+1};
+  if(!hit(off)){if(hit(off-1))off--;else return null}
+  var a=letters(cont);for(var k=0;k<a.length;k++)if(a[k][0]===c.node&&a[k][1]===off)
+    return{space:cont.dataset.space,pos:+cont.dataset.p+k};
+  return null}
+/* number of bases before a boundary point (text node or element node + offset) */
+function lettersBefore(cont,node,off){var a=letters(cont),r=document.createRange();
+  try{r.setStart(node,off);r.collapse(true)}catch(e){return a.length}
+  for(var k=0;k<a.length;k++)if(r.comparePoint(a[k][0],a[k][1])>=0)return k;
+  return a.length}
+function boundary(node,off,isStart,view){
+  var el=node.nodeType===3?node.parentElement:node,cont=el&&el.closest(".bases");
+  if(cont){var k=lettersBefore(cont,node,off)-(isStart?0:1);k=Math.max(0,Math.min(k,+cont.dataset.n-1));
+    return{space:cont.dataset.space,pos:+cont.dataset.p+k}}
+  var list=$$(".bases",view),i;
+  if(isStart){for(i=0;i<list.length;i++)if(node.compareDocumentPosition(list[i])&Node.DOCUMENT_POSITION_FOLLOWING)
+    return{space:list[i].dataset.space,pos:+list[i].dataset.p}}
+  else{for(i=list.length-1;i>=0;i--)if(node.compareDocumentPosition(list[i])&Node.DOCUMENT_POSITION_PRECEDING)
+    return{space:list[i].dataset.space,pos:+list[i].dataset.p+ +list[i].dataset.n-1}}
+  return null}
+
+/* ---------- selection state ---------- */
+var anchor=null,sel=null,selVar=null;     // selVar: "highlighted variant(s)" - set by clicking a coloured base
+var markPos=null;                          // "marked base" - set with the Mark button (u coordinate), any base
+/* gnomAD links: a variant page, or the region around one position.
+   hg19 / GRCh37 pages open gnomAD v2.1.1 (dataset=gnomad_r2_1); any other build
+   gets no dataset parameter, so gnomAD opens its default (GRCh38) dataset. */
+var GNOMAD="https://gnomad.broadinstitute.org/";
+var G37=/hg19|grch37/i.test(D.build||"");
+var GDS=G37?"?dataset=gnomad_r2_1":"", GNAME=G37?"gnomAD v2.1.1 (GRCh37)":"gnomAD";
+function gChr(){return String(D.chr).replace(/^chr/i,"")}
+function gnomadPos(u){var g=u2g(u);
+  return "<a href=\""+GNOMAD+"region/"+gChr()+"-"+Math.max(1,g-20)+"-"+(g+20)+GDS+"\" target=\"_blank\" rel=\"noopener\""+
+    " title=\"Open this position in "+GNAME+", \u00b120 bp\">"+esc(D.chr+":"+fmt(g))+" \u2197</a>"}
+function gnomadVar(v){var id=String(v.label).replace(/^chr/i,"");
+  return "<a href=\""+GNOMAD+"variant/"+encodeURIComponent(id)+GDS+"\" target=\"_blank\" rel=\"noopener\""+
+    " title=\"Open this variant in "+GNAME+"\">"+esc(v.label)+" \u2197</a>"}
+function markIv(){return markPos===null?null:varIv([{u0:markPos,u1:markPos}])}
+function region(space,a,b){var s={space:space,a:Math.min(a,b),b:Math.max(a,b)};
+  s.len=s.b-s.a+1;
+  if(space==="c"){s.seq=D.cdna.slice(s.a-1,s.b);var ua=c2u(s.a),ub=c2u(s.b);s.ua=ua;s.ub=ub;
+    s.junction=(ub-ua)!==(s.b-s.a)}
+  else if(space==="p"){s.a=Math.min(s.a,NP);s.b=Math.min(s.b,NP);s.len=s.b-s.a+1;
+    s.seq=D.protein.slice(s.a-1,s.b);var c=cOfP(s.a,s.b);
+    s.ua=c2u(c[0]);s.ub=c2u(c[1]);s.ca=c[0];s.cb=c[1];s.junction=false}
+  else{s.seq=useq(s.a,s.b);s.ua=s.a;s.ub=s.b;s.junction=false}
+  return s}
+function describe(s){
+  var where=locU(s.ua)===locU(s.ub)?locU(s.ua):locU(s.ua)+" → "+locU(s.ub);
+  if(s.space==="p"){var aa=D.protein;
+    return "aa "+(s.len===1?fmt(s.a):fmt(s.a)+"-"+fmt(s.b))+" (p."+aa[s.a-1]+s.a+(s.len>1?"_"+aa[s.b-1]+s.b:"")+") &middot; "+
+      cdotC(s.ca)+"_"+cdotC(s.cb).replace(/^[cn]\./,"")+" &middot; "+where}
+  var h=s.len===1?cdotU(s.ua):cdotU(s.ua)+"_"+cdotU(s.ub).replace(/^[cn]\./,"");
+  var cd=s.space==="c"?"cDNA "+(s.len===1?fmt(s.a):fmt(s.a)+"-"+fmt(s.b))+" &middot; ":"";
+  return cd+h+" &middot; "+where+" &middot; "+gtxt(s.ua,s.ub)+
+    (s.junction?" <span class=\"hint\">(spans exon junction)</span>":"")}
+function varIv(list){var o={u:[],c:[],p:[]};list.forEach(function(v){var cs=cFromU(v.u0,v.u1);
+  o.u.push([v.u0,v.u1]);cs.forEach(function(x){o.c.push(x)});pFromCs(cs).forEach(function(x){o.p.push(x)})});return o}
+function varTxt(v){return v.label+(v.id?" ("+v.id+")":"")+" AF "+afTxt(v.af)+" · "+cdotU(v.u0)}
+/* variants (AF >= current filter) inside a selection; all=true also counts
+   them while the variant checkbox is off. Uses the selection's own pieces,
+   so a cDNA selection across a junction does not count intronic variants. */
+function varsInSel(s,all){var iv=ivOf(s).u;return VAR.filter(function(v){if(v.af<vmin||(!all&&!vshow))return false;
+  for(var i=0;i<iv.length;i++)if(v.u1>=iv[i][0]&&v.u0<=iv[i][1])return true;return false})}
+function pctTxt(x){return String(parseFloat((x*100).toPrecision(3)))+"%"}
+var VLABEL=$("#vlabel")?$("#vlabel").textContent.trim():"variants";
+/* one-line header for "Add context" */
+function ctxHeader(s,isRC){
+  var kind=s.space==="c"?"cDNA":s.space==="p"?"protein":"genomic (unspliced)";
+  if(D.strand==="-"&&s.space!=="p")kind+=", transcript orientation";
+  if(isRC)kind+=", reverse complement";
+  var pos=s.space==="p"?"p."+D.protein[s.a-1]+s.a+(s.len>1?"_"+D.protein[s.b-1]+s.b:""):
+    (s.len===1?cdotU(s.ua):cdotU(s.ua)+"_"+cdotU(s.ub).replace(/^[cn]\./,""));
+  var where=locU(s.ua)===locU(s.ub)?locU(s.ua):locU(s.ua)+" to "+locU(s.ub);
+  return ">"+[D.gene_name,D.transcript_id+(D.tname?" ("+D.tname+")":"")+(D.mane?" (not MANE; MANE is "+D.mane+")":""),pos,where,gtxt(s.ua,s.ub),D.build,kind,
+    fmt(s.len)+(s.space==="p"?" aa":" bp")].filter(function(x){return x}).join(" | ")}
+
+function paintSel(){
+  if(!HL)return;
+  var hs=new Highlight(),ha=new Highlight(),hv=new Highlight(),hc=new Highlight();
+  if(sel)paint(sel.len===1?ha:hs,ivOf(sel));
+  // highlighted variant: blue on yellow, on screen only (the RTF keeps its gnomAD colour)
+  if(selVar&&vshow)paint(hc,varIv(selVar));
+  // marked base: red on yellow, drawn above the highlighted variant where they overlap
+  if(markPos!==null)paint(hv,markIv());
+  setHL("sel",hs,1);setHL("anc",ha,1);setHL("vchk",hc,5);setHL("vsel",hv,6);
+  nudgeRepaint();
+}
+
+/* ---------- bottom drawer (tab: click = open/close, drag = resize) ---------- */
+var bar=$("#pickbar"),dbody=$(".dbody",bar),dtab=$(".dtab",bar);
+var store={get:function(k){try{return localStorage.getItem(k)}catch(e){return null}},
+           set:function(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+var dOpen=store.get("mp_open")!=="0",dH=+store.get("mp_h")||0;
+function padMain(){requestAnimationFrame(function(){
+  $("main").style.paddingBottom=(getComputedStyle(bar).display==="none"?40:bar.offsetHeight+24)+"px"})}
+function applyDrawer(){
+  bar.classList.toggle("collapsed",!dOpen);
+  var t=$(".dtoggle",bar);t.textContent=dOpen?"▼":"▲";t.setAttribute("aria-expanded",dOpen);
+  t.title=dOpen?"Collapse":"Expand";
+  dbody.style.height=dH?dH+"px":"";padMain()}
+function openDrawer(o){dOpen=o;store.set("mp_open",o?"1":"0");applyDrawer()}
+dtab.addEventListener("pointerdown",function(e){
+  if(e.button!==0)return;e.preventDefault();
+  var y0=e.clientY,h0=dOpen?dbody.offsetHeight:0,moved=false;dtab.setPointerCapture(e.pointerId);
+  function mv(ev){var dy=y0-ev.clientY;if(!moved&&Math.abs(dy)<5)return;moved=true;
+    if(!dOpen){dOpen=true;bar.classList.remove("collapsed")}
+    dH=Math.round(Math.max(70,Math.min(innerHeight*0.8,h0+dy)));dbody.style.height=dH+"px";padMain()}
+  function up(){dtab.removeEventListener("pointermove",mv);dtab.removeEventListener("pointerup",up);
+    if(moved){store.set("mp_h",String(dH));openDrawer(true)}else openDrawer(!dOpen)}
+  dtab.addEventListener("pointermove",mv);dtab.addEventListener("pointerup",up)});
+window.addEventListener("resize",padMain);
+
+function copyText(text,btn){var done=function(){var o=btn.textContent;btn.textContent="Copied";setTimeout(function(){btn.textContent=o},1100)};
+  if(navigator.clipboard&&window.isSecureContext)navigator.clipboard.writeText(text).then(done,function(){fallback()});else fallback();
+  function fallback(){var t=document.createElement("textarea");t.value=text;document.body.appendChild(t);t.select();document.execCommand("copy");t.remove();done()}}
+
+function updateBar(){
+  document.body.classList.toggle("has-pick",!!sel||!!(selVar&&vshow)||markPos!==null);
+  var mb=$("button.mark",bar),one=sel&&sel.len===1&&sel.space!=="p"&&sel.ua!==null;
+  mb.hidden=!one&&markPos===null;
+  mb.textContent=one&&markPos!==sel.ua?"\u2605 Mark this base":"\u2605 Unmark";
+  var sp=$(".pane.seq",bar),rc=$("input.rc",sp);
+  if(sel){var s=sel.seq;
+    if(s===null){$("textarea",sp).value="";$(".info",sp).innerHTML="<b>Selection includes intron sequence that is not embedded in this page</b> (re-run with a larger intron_max)"}
+    else{var isRC=rc.checked&&sel.space!=="p";if(isRC)s=revcomp(s);
+      $("textarea",sp).value=($("input.ctx",sp).checked?ctxHeader(sel,isRC)+"\n":"")+s;
+      var vv=varsInSel(sel,false);
+      var unit=sel.space==="p"?" aa":" bp";
+      $(".info",sp).innerHTML=(sel.len===1?"<b>"+s+"</b> &nbsp;":"<b>"+fmt(sel.len)+unit+"</b> &nbsp;")+describe(sel)+
+        (rc.checked&&sel.space!=="p"?" &middot; reverse complement":"")+(vv.length?" &middot; <span style=\"color:#c92a2a\">"+vv.length+" variant"+(vv.length>1?"s":"")+"</span>":"")}}
+  // warnings: hidden variants, reference differences, strand
+  var W=[];
+  if(sel&&sel.seq!==null){
+    if(!vshow&&VAR.length){var hv=varsInSel(sel,true);
+      if(hv.length)W.push("⚠ "+hv.length+" variant"+(hv.length>1?"s":"")+" ≥ "+pctTxt(vmin)+" in this selection (hidden – tick "+esc(VLABEL)+" to see them)")}
+    if(D.refdiff.length){var ci=ivOf(sel).c,hit=D.refdiff.filter(function(c){return ci.some(function(x){return c>=x[0]&&c<=x[1]})});
+      if(hit.length)W.push("⚠ includes "+hit.length+" base"+(hit.length>1?"s":"")+(D.mane?" where this transcript differs from MANE "+esc(D.mane):
+        " where the "+esc(D.build||"genome")+" reference differs from the transcript")+" ("+hit.slice(0,5).map(cdotC).join(", ")+")")}
+    if(D.lendiff)W.push("⚠ cDNA length differs from "+(D.mane?"MANE "+esc(D.mane):"the transcript")+": c. numbers and amino acids here may be shifted – use the genomic position");
+    if(D.strand==="-"&&sel.space!=="p")W.push("<span class=\"n\">Gene on the reverse strand: sequence is 5′→3′ of the transcript (reverse complement of genomic +)</span>")}
+  $(".warns",sp).innerHTML=W.map(function(x){return "<span>"+x+"</span>"}).join("");
+  var mv=$(".markvar",sp);
+  var ML=[];
+  if(markPos!==null)ML.push("<b>\u2605 Marked base:</b> "+esc(cdotU(markPos))+" &middot; "+esc(locU(markPos))+" &middot; "+gnomadPos(markPos)+
+    " <span class=\"hint\">(red in every tab and in the RTF)</span>");
+  if(selVar&&vshow)ML.push("<span class=\"mvb\"><b>Highlighted variant"+(selVar.length>1?"s":"")+":</b> "+selVar.map(function(v){
+    return gnomadVar(v)+(v.id?" ("+esc(v.id)+")":"")+" AF "+afTxt(v.af)+" &middot; "+esc(cdotU(v.u0))}).join(" ; ")+"</span>"+
+    " <span class=\"hint\">(blue on screen only, for checking; the RTF keeps its gnomAD colour)</span>");
+  mv.innerHTML=ML.join("<br>");
+  // summary shown on the drawer tab (useful when collapsed)
+  $(".dsum",bar).textContent=(sel?(sel.len===1?(sel.space==="p"?"1 aa":"1 base"):fmt(sel.len)+(sel.space==="p"?" aa":" bp"))+" · "+cdotU(sel.ua):"")+
+    (markPos!==null?"  \u2605 "+cdotU(markPos):selVar&&vshow?"  variant "+selVar[0].label:"");
+  paintSel();padMain();
+}
+$("button.copy",bar).addEventListener("click",function(){copyText($(".pane.seq textarea",bar).value,this)});
+$("input.rc",bar).addEventListener("change",updateBar);
+$("input.ctx",bar).addEventListener("change",function(){store.set("mp_ctx",this.checked?"1":"0");updateBar()});
+$("button.clear",bar).addEventListener("click",function(){anchor=null;sel=null;selVar=null;markPos=null;updateBar()});
+$("button.mark",bar).addEventListener("click",function(){
+  if(sel&&sel.len===1&&sel.space!=="p"&&sel.ua!==null&&markPos!==sel.ua){
+    markPos=sel.ua;var vv=varsIn(markPos,markPos);selVar=vv.length?vv:null}
+  else{markPos=null;selVar=null}
+  updateBar()});
+
+function commit(space,a,b){sel=region(space,a,b);updateBar()}
+
+/* ---------- mouse handling ---------- */
+document.addEventListener("mousedown",function(e){
+  if(e.shiftKey&&anchor&&e.target.closest&&e.target.closest(".bases"))e.preventDefault()});
+document.addEventListener("mouseup",function(e){
+  if(e.button!==0||bar.contains(e.target))return;
+  var view=e.target.closest&&e.target.closest("section.view");if(!view)return;
+  var ns=window.getSelection();
+  if(ns&&!ns.isCollapsed&&ns.rangeCount&&view.contains(ns.anchorNode)){      // drag
+    var r=ns.getRangeAt(0),a=boundary(r.startContainer,r.startOffset,true,view),b=boundary(r.endContainer,r.endOffset,false,view);
+    if(a&&b&&a.space===b.space&&b.pos>=a.pos){ns.removeAllRanges();anchor={space:a.space,pos:a.pos};commit(a.space,a.pos,b.pos)}
+    return}
+  var p=posAt(e.clientX,e.clientY);if(!p)return;
+  if(e.shiftKey&&anchor&&anchor.space===p.space){commit(p.space,anchor.pos,p.pos)}
+  else{
+    // a single click on a coloured (visible) variant highlights it in every tab;
+    // this is only for spot-checking, so the marked base stays marked
+    var ur=uRangeOf(p),vv=varsIn(ur[0],ur[1]);if(vv.length)selVar=vv;
+    anchor=p;commit(p.space,p.pos,p.pos)}
+});
+document.addEventListener("keydown",function(e){if(e.key!=="Escape")return;anchor=null;sel=null;selVar=null;markPos=null;updateBar()});
+
+/* ---------- Go to: c.123, c.68-7, c.-20, c.*50, exon 3, intron 2, chr:pos, p.45 ---------- */
+function parseGo(t){
+  t=t.trim().replace(/,/g,"").replace(/\s+/g," ");if(!t)return null;var m,c,u;
+  if((m=/^(?:p\.|aa ?)([A-Za-z]{0,3})(\d+)$/i.exec(t))){var k=+m[2];
+    if(!NAA||k<1||k>NAA)return{err:NAA?"the protein has "+NAA+" aa":"non-coding transcript"};
+    c=D.cds_s+3*(k-1);return{p:k,c:c,u:c2u(c),pref:"protein"}}
+  if((m=/^ex(?:on)? ?(\d+)$/i.exec(t))){var e=EX[+m[1]-1];if(!e)return{err:"there are "+EX.length+" exons"};return{u:e.us,c:e.cs}}
+  if((m=/^in(?:tron)? ?(\d+)$/i.exec(t))){var it=IN[+m[1]-1];if(!it)return{err:"there are "+IN.length+" introns"};return{u:it.us,c:null,pref:"exons"}}
+  if((m=/^([cn])\.([-*]?)(\d+)(?:([+-])(\d+))?$/i.exec(t))){var N=+m[3],cp;
+    if(D.cds_s===null||m[1].toLowerCase()==="n")cp=m[2]==="-"?1-N:m[2]==="*"?NC+N:N;else cp=m[2]==="-"?D.cds_s-N:m[2]==="*"?D.cds_e+N:D.cds_s+N-1;
+    var inx=cp>=1&&cp<=NC,base=inx?c2u(cp):(cp<1?cp:cp-NC+L);
+    if(m[4]){if(!inx)return{err:"+/- offsets need a position inside the transcript"};
+      u=base+(m[4]==="+"?+m[5]:-m[5]);return{u:u,c:u2c(u),pref:u2c(u)===null?"exons":null}}
+    return{u:base,c:inx?cp:null}}
+  var g=null;
+  if((m=/^(?:chr)?([0-9XYMT]+):(\d+)$/i.exec(t))){
+    var mt=function(x){x=String(x).toUpperCase().replace(/^CHR/,"");return x==="M"?"MT":x};
+    if(mt(m[1])!==mt(D.chr))return{err:"this gene is on chromosome "+D.chr};g=+m[2]}
+  else if(/^\d+$/.test(t)){var n=+t;
+    if(n>=D.tx_s-D.embed&&n<=D.tx_e+D.embed)g=n;else return parseGo("c."+n)}
+  if(g!==null){u=D.strand==="-"?D.tx_e-g+1:g-D.tx_s+1;return{u:u,c:u2c(u)}}
+  return{err:"not recognised – try c.123, c.68-7, exon 3, "+D.chr+":"+D.tx_s+" or p.45"}}
+function goTo(t,msg){
+  var r=parseGo(t);msg.textContent="";if(!r)return;if(r.err){msg.textContent=r.err;return}
+  if(r.u!=null&&(r.u<1-D.up.length||r.u>L+D.dn.length)){msg.textContent="outside the region on this page";return}
+  var cur=currentView(),view,space,pos;
+  if(r.pref==="protein"&&$("#protein")){view="protein";space="p";pos=r.p}
+  else if(cur==="protein"&&r.pref!=="exons"&&r.c!=null&&pFromC(r.c,r.c).length&&pFromC(r.c,r.c)[0][0]<=NAA){view="protein";space="p";pos=pFromC(r.c,r.c)[0][0]}
+  else if(cur==="cdna"&&r.pref!=="exons"&&r.c!=null){view="cdna";space="c";pos=r.c}
+  else if(cur==="exons"||r.c==null||r.pref==="exons"){view="exons";space="g";pos=r.u}
+  else{view="cdna";space="c";pos=r.c}
+  if(view!==cur)clearVariantColours();
+  show(view);history.replaceState(null,"","#"+view);
+  if(view==="exons"){
+    // widen the intron/flank dropdown if the position is not shown yet
+    var need=0,ilen=0;
+    if(pos<1)need=1-pos;else if(pos>L)need=pos-L;
+    else if(exonU(pos)<0)for(var i=0;i<IN.length;i++)if(pos>=IN[i].us&&pos<=IN[i].ue){
+      var d=Math.min(pos-IN[i].us+1,IN[i].ue-pos+1);ilen=IN[i].len;
+      if(ilen>2*D.embed&&d>D.embed){msg.textContent=fmt(d)+" bp into the intron – beyond the "+fmt(D.embed)+" bp included on this page";return}
+      need=d;break}
+    if(need>0&&isel){var shown=function(v){return (pos<1||pos>L)?Math.max(D.flank,v)>=need:(v>=need||ilen<=2*v)};
+      if(!shown(+isel.value)){var opt=[].slice.call(isel.options).map(function(o){return +o.value}).filter(shown);
+        if(!opt.length){msg.textContent="beyond the sequence included on this page";return}
+        isel.value=opt[0];renderFlex(opt[0])}}
+    // switch back on rows hidden by the markup boxes
+    var tg=(pos<1||pos>L)?"no-flanks":(exonU(pos)<0?"no-introns":null),cb=tg&&$('#exons input[data-toggle="'+tg+'"]');
+    if(cb&&!cb.checked){cb.checked=true;cb.dispatchEvent(new Event("change"))}
+  }
+  var cont=$$("#"+view+" .bases").filter(function(c){return c.dataset.space===space&&pos>=+c.dataset.p&&pos<+c.dataset.p+ +c.dataset.n})[0];
+  if(!cont){msg.textContent="not shown in this tab";return}
+  var a=letters(cont)[pos-+cont.dataset.p],rg=document.createRange();rg.setStart(a[0],a[1]);rg.setEnd(a[0],a[1]+1);
+  window.scrollBy({top:rg.getBoundingClientRect().top-innerHeight*0.35,behavior:"smooth"});
+  anchor={space:space,pos:pos};commit(space,pos,pos);
+}
+$$("form.goto").forEach(function(f){var inp=$("input",f),msg=$(".gmsg",f);
+  f.addEventListener("submit",function(e){e.preventDefault();goTo(inp.value,msg)});
+  inp.addEventListener("input",function(){msg.textContent=""})});
+
+/* ---------- RTF export of the current tab, with the colours shown ----------
+   Text colours/backgrounds are read from the page as displayed (exons, UTR,
+   codons, translation, intron/flank, splice residues), hidden rows/lines are
+   left out, and gnomAD colours + the marked base are added on top. */
+function rtfExport(){
+  var view=currentView(),root=$("section.view#"+view),styleC=new Map(),hidC=new Map();
+  function hex(c){var m=/rgba?\(([^)]+)\)/.exec(c||"");if(!m)return null;var p=m[1].split(",").map(parseFloat);
+    if(p.length>3&&p[3]===0)return null;return "#"+p.slice(0,3).map(function(v){return ("0"+Math.round(v).toString(16)).slice(-2)}).join("")}
+  function hidden(el){if(!el||el===root)return false;if(hidC.has(el))return hidC.get(el);
+    var h=getComputedStyle(el).display==="none"||hidden(el.parentElement);hidC.set(el,h);return h}
+  function baseStyle(el){var s=styleC.get(el);if(s)return s;var cs=getComputedStyle(el),bg=null,e=el;
+    while(e&&e.tagName!=="PRE"&&e.tagName!=="TD"){bg=hex(getComputedStyle(e).backgroundColor);if(bg)break;e=e.parentElement}
+    s={fg:hex(cs.color)||"#000000",bg:bg};styleC.set(el,s);return s}
+  // overlay lookups: key = space + position
+  var vmap={},smap={};
+  if(vshow){VAR.forEach(function(v){if(!vvis(v))return;var b=vbin(v.af),iv=varIv([v]);
+    ["u","c","p"].forEach(function(k){iv[k].forEach(function(x){for(var i=x[0];i<=x[1];i++){var key=k+i;if(!(key in vmap)||vmap[key]>b)vmap[key]=b}})})})}
+  [markIv()].forEach(function(iv){if(!iv)return;
+    ["u","c","p"].forEach(function(k){iv[k].forEach(function(x){for(var i=x[0];i<=x[1];i++)smap[k+i]=1})})});
+  function overlay(space,pos,st){var key=spaceKey(space)+pos;
+    if(smap[key])return{fg:"#e00000",bg:st.bg,size:40,b:1};
+    if(key in vmap){var B=BINS[vmap[key]];return{fg:B[2],bg:B[1],uld:1}}
+    return st}
+  // walk a <pre>: returns lines of [char, style]
+  function collect(pre,lines){var cur=[],cnt=new Map(),w=document.createTreeWalker(pre,NodeFilter.SHOW_TEXT),n;
+    while((n=w.nextNode())){var el=n.parentElement;if(hidden(el))continue;
+      var st=baseStyle(el),cont=el.closest(".bases");
+      for(var i=0;i<n.data.length;i++){var ch=n.data[i];
+        if(ch==="\n"){lines.push(cur);cur=[];continue}
+        var s2=st;if(cont&&isBase(ch)){var k=cnt.get(cont)||0;cnt.set(cont,k+1);s2=overlay(cont.dataset.space,+cont.dataset.p+k,st)}
+        cur.push([ch,s2])}}
+    if(cur.length)lines.push(cur);return lines}
+  var T=function(t,st){return t.split("").map(function(ch){return[ch,st]})};
+  var HEAD={fg:"#24435f",f:1,size:24,b:1},SUB={fg:"#5d6b7a",f:1,size:18};
+  var title={cdna:"cDNA sequence",exons:"Exons",protein:"Protein sequence"}[view];
+  var LINES=[];
+  LINES.push(T(D.gene_name+" \u2013 "+D.transcript_id+" \u2013 "+title,HEAD));
+  LINES.push(T($(".summary dd:nth-of-type(2)").textContent.trim(),SUB));
+  if(vshow&&BINS.length){var lg=T((($("#vlabel")&&$("#vlabel").textContent.trim())||"Variants")+" variants, AF bands: ",SUB);
+    BINS.forEach(function(B){lg=lg.concat(T(" "+B[3].replace(/&ge;/g,"\u2265").replace(/&ndash;/g,"\u2013").replace(/&lt;/g,"<")+" ",{fg:B[2],bg:B[1],f:1,size:18,uld:1}),T("  ",SUB))});
+    LINES.push(lg)}
+  if(markPos!==null)LINES.push(T("Marked base (red, 20 pt): ",{fg:"#e00000",f:1,size:18,b:1}).concat(
+    T(cdotU(markPos)+" \u00b7 "+locU(markPos)+" \u00b7 "+D.chr+":"+fmt(u2g(markPos))+" ("+(D.build||"genome")+")",SUB)));
+  if(selVar&&vshow)LINES.push(T("Highlighted variant"+(selVar.length>1?"s":"")+": ",{fg:"#5d6b7a",f:1,size:18,b:1}).concat(T(selVar.map(varTxt).join(" ; "),SUB)));
+  if($(".verwarn"))LINES.push(T($(".verwarn").textContent.trim(),{fg:"#6b4e00",f:1,size:18}));
+  if($(".refwarn"))LINES.push(T($(".refwarn").textContent.trim(),{fg:"#8a1c1c",f:1,size:18}));
+  if(D.prov)LINES.push(T(D.prov,SUB));
+  LINES.push([]);
+  if(view==="exons"){
+    // sequence blocks only (like Ensembl's export), separated by a blank line
+    $$("table.exons tbody tr",root).forEach(function(tr){if(hidden(tr))return;
+      var td=tr.children,pre=$("pre",td[td.length-1]);if(pre){collect(pre,LINES);LINES.push([])}});
+  } else {var pre=$("pre",root);if(pre)collect(pre,LINES)}
+  // ---- write RTF
+  var cols=[],ci={};function cidx(h){if(!(h in ci)){cols.push(h);ci[h]=cols.length}return ci[h]}
+  function esc(t){return t.replace(/[\\{}]/g,function(c){return "\\"+c}).replace(/[^\x20-\x7e]/g,function(c){var k=c.charCodeAt(0);return "\\u"+(k>32767?k-65536:k)+"?"})}
+  function sig(s){return [s.fg,s.bg,s.size,s.b,s.uld,s.f].join("|")}
+  var body=LINES.map(function(line){
+    if(!line.length)return "{\\pard\\fs18\\f0\\par}";
+    var out="",run="",cur=null;
+    function flush(){if(!run)return;var s=cur,ctl="";
+      if(s.f)ctl+="\\f"+s.f;if(s.fg)ctl+="\\cf"+cidx(s.fg);
+      if(s.bg){var j=cidx(s.bg);ctl+="\\chshdng0\\chcbpat"+j+"\\cb"+j}
+      if(s.size)ctl+="\\fs"+s.size;if(s.b)ctl+="\\b";if(s.uld)ctl+="\\uld";
+      out+="{"+ctl+" "+esc(run)+"}";run=""}
+    line.forEach(function(x){if(!cur||sig(x[1])!==sig(cur)){flush();cur=x[1]}run+=x[0]});flush();
+    return "{\\pard\\fs18\\f0 "+out+"\\par}"}).join("\n");
+  var ct=cols.map(function(h){return "\\red"+parseInt(h.substr(1,2),16)+"\\green"+parseInt(h.substr(3,2),16)+"\\blue"+parseInt(h.substr(5,2),16)+";"}).join("");
+  var doc="{\\rtf1\\ansi\\deff0{\\fonttbl{\\f0\\fmodern Courier New;}{\\f1\\fswiss Arial;}}\n{\\colortbl ;"+ct+"}\n"+
+    "\\paperw16838\\paperh11906\\margl720\\margr720\\margt720\\margb720\\landscape\n"+body+"\n}";
+  download(D.gene_name+"_"+D.transcript_id+"_"+view+".rtf",doc,"application/rtf");
+  return doc}
+$$("button.rtf").forEach(function(b){b.addEventListener("click",rtfExport)});
+window.__rtfExport=rtfExport;   // used by the test suite
+
+/* ---------- start ---------- */
+$("input.ctx",bar).checked=store.get("mp_ctx")==="1";
+// browsers may restore a ticked variant box on reload / Back: follow it
+if(vs){vshow=vs.checked;$(".varbar").classList.toggle("off",!vshow)}
+applyDrawer();updateBar();
+renderFlex(isel?+isel.value:25);restripe();
+})();
+</script>
+</body></html>

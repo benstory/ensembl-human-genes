@@ -1,0 +1,41 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>MANE transcripts (hg19)</title>
+<style>
+body{font:14px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;margin:0 auto;max-width:900px;padding:16px;color:#1d2a36;background:#fff}
+h1{font-size:20px;margin:0 0 10px}
+.bar{position:sticky;top:0;background:#fff;padding:8px 0;border-bottom:1px solid #dde3e9;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+input[type=search]{font:inherit;padding:7px 10px;width:260px;max-width:100%;border:1px solid #9aa8b6;border-radius:4px}
+#n{color:#5b6b7a;font-size:13px}
+ul{list-style:none;margin:6px 0;padding:0}
+li{padding:4px 2px;border-bottom:1px solid #eef1f4}
+a{color:#1f4e79;text-decoration:none} a:hover{text-decoration:underline}
+.s{color:#5b6b7a;font-size:12.5px}
+.f{display:inline-block;font-size:11.5px;font-weight:600;border-radius:3px;padding:0 6px;margin-left:4px;cursor:help}
+.red{background:#fde2e2;color:#8a1c1c;border:1px solid #f1aeb5}
+.amb{background:#fff3bf;color:#6b4e00;border:1px solid #e8b10c}
+.gry{background:#eef1f4;color:#5b6b7a;border:1px solid #cfd7df}
+.key{font-size:12.5px;color:#5b6b7a;margin:8px 0}
+details{margin-top:16px;font-size:13px} .np li{color:#5b6b7a}
+</style></head><body>
+<h1>MANE transcripts (hg19)</h1>
+<div class="key"><span class="f red">length differs</span> c. numbers may not match the NM &ndash; use genomic positions &nbsp;
+<span class="f amb">bases differ</span> some hg19 bases differ, numbering OK &nbsp;
+<span class="f amb">NOT MANE</span> another RefSeq version. Hover a flag for details.</div>
+<div class="bar"><input type="search" id="q" placeholder="Search gene, NM, ENST, chr" autofocus>
+<label><input type="checkbox" id="rk"> flagged only (1)</label><span id="n"></span></div>
+<ul id="L"></ul><div id="more" class="s"></div>
+<script>
+var K=["nf1 nm_000267.3 nm_000267.3 chr17","nf1 nm_001042492.3 enst00000358273.9 chr17","srsf2 nm_001195427.2 enst00000359995.10 chr17"];
+var H=["<li><a href=\"NF1_NM_000267.html\"><b>NF1<\/b> NM_000267.3<\/a> <span class=\"s\">MANE Plus Clinical &middot; chr17<\/span> <span class=\"f red\" title=\"hg19 cDNA 12362 bp vs NM 12310 bp. c. numbers on this page may not match the official NM numbering - find variants by genomic position.\">length differs<\/span><span class=\"f amb\" title=\"Built from another RefSeq version.\">NOT MANE<\/span><\/li>",
+"<li><a href=\"NF1_NM_001042492.html\"><b>NF1<\/b> NM_001042492.3<\/a> <span class=\"s\">MANE Select &middot; chr17<\/span> <\/li>",
+"<li><a href=\"SRSF2_NM_001195427.html\"><b>SRSF2<\/b> NM_001195427.2<\/a> <span class=\"s\">MANE Select &middot; chr17<\/span> <\/li>"];
+var RK=[1,0,0];
+var MAX=300,L=document.getElementById("L"),q=document.getElementById("q"),rk=document.getElementById("rk"),
+    N=document.getElementById("n"),M=document.getElementById("more"),t=null;
+function run(){var v=q.value.trim().toLowerCase(),f=rk.checked,out=[],c=0;
+  for(var i=0;i<K.length;i++){if((!f||RK[i])&&(!v||K[i].indexOf(v)>-1)){c++;if(out.length<MAX)out.push(H[i])}}
+  L.innerHTML=out.join("");N.textContent=c+" of "+K.length;
+  M.textContent=c>MAX?"Showing the first "+MAX+" of "+c+" - type more to narrow the list.":""}
+q.addEventListener("input",function(){clearTimeout(t);t=setTimeout(run,60)});
+rk.addEventListener("change",run);run();
+</script></body></html>

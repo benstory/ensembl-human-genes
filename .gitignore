@@ -1,0 +1,37 @@
+# input data (large; users download their own)
+*.fa
+*.fa.gz
+*.fai
+*.gzi
+*.fna
+*.fna.gz
+*.gff
+*.gff.gz
+*.gtf
+*.gtf.gz
+*.txt.gz
+*.txt
+*.vcf
+*.vcf.gz
+*.tbi
+MANE.*.summary.txt
+hg19_gnomad_*.txt
+humandb/
+
+# output
+mane_pages_hg19/
+
+# local settings
+my_config.R
+
+# R / OS clutter
+.Rhistory
+.RData
+.Rproj.user/
+.DS_Store
+
+# editor backup / swap files
+*~
+\#*\#
+.#*
+*.swp
