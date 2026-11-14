@@ -10,7 +10,7 @@
 
 This tool generates **one interactive HTML page for each MANE Select and MANE Plus Clinical transcript**. The pages use **hg19 / GRCh37** coordinates and sequence, and they look like Ensembl transcript pages. A searchable index page links them all and flags any page whose sequence does not match MANE.
 
-**NOTE** some transcripts do not have a hg19 equivalent and are therefore not currently generated.
+**NOTE** !!! some MANE transcripts do not have an hg19 equivalent and are therefore not currently generated.
 
 MANE is only defined on GRCh38. Many diagnostic pipelines still run on hg19. This tool takes NCBI's GRCh37 mapping of the MANE RefSeq transcripts, builds each transcript from the GRCh37 genome and labels it with its MANE Ensembl IDs. It then checks every built cDNA against MANE's own sequence, so you know which pages you can trust as they are.
 
@@ -20,7 +20,7 @@ The pages are plain static HTML. You can open them from a shared drive, put them
 
 ---
 
-**[▶ Live demo](https://benstory.github.io/ensembl-human-genes/)** – example pages for BRCA2 and TP53
+**[▶ Live demo](https://benstory.github.io/ensembl-human-genes/)** – example pages for NF1 and SRSF2
 
 ![Example page: NF1 view with gnomAD variants](docs/example.png)
 
