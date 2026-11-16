@@ -689,17 +689,11 @@ render_cdna <- function(m, width = 60) {
                      spans(cds_chars, cds_cls), strrep(" ", padn), ln_r(max(ci) - m$cds_s + 1))
       # amino-acid letters on this line form a "p" (protein) container so
       # variant / selection highlights can be drawn on the translation too
-      ## OLD ## pep_txt <- html_escape(paste(pep_chars, collapse = ""))
-      ## OLD ## k_here <- codon[idx][in_cds[idx] & off == 1] + 1
-      ## OLD ## n_let <- sum(grepl("[A-Za-z*]", pep_chars))
+      pep_txt <- html_escape(paste(pep_chars, collapse = ""))
+      k_here <- codon[idx][in_cds[idx] & off == 1] + 1
+      n_let <- sum(grepl("[A-Za-z*]", pep_chars))
       l_pep <- if (in_cds[s] && any(is_res[idx])) codon[s] + 1 else NA
       r_pep <- if (n_res[e] > 0) n_res[e] else NA
-      # line numbers = first / last residue whose letter is on this line (a letter
-      # sits on its codon's middle base, so it can be on the line before/after the
-      # codon's first/last base)
-      k_let <- k_here[k_here <= length(aa)]
-      l_pep <- if (in_cds[s] && length(k_let)) min(k_let) else NA
-      r_pep <- if (length(k_let)) max(k_let) else NA
       pep_cont <- if (n_let > 0) sprintf('<span class="pep bases" data-space="p" data-p="%d" data-n="%d">%s</span>',
                                          min(k_here), n_let, pep_txt) else sprintf('<span class="pep">%s</span>', pep_txt)
       pep <- sprintf('<span class="ln pepl">%s%s%s%s\n</span>',
