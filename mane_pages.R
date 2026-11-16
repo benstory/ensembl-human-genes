@@ -663,6 +663,8 @@ render_cdna <- function(m, width = 60) {
   cls <- paste0("x", (exidx - 1) %% 2,
                 ifelse(in_cds, paste0(" c", codon %% 2), if (m$has_cds) " u" else ""))
   aa <- if (m$has_cds) strsplit(m$protein, "")[[1]] else character(0)
+  is_res <- in_cds & (pos - m$cds_s) %% 3 == 1 & grepl("[A-Za-z]", aa[codon + 1])
+  n_res <- cumsum(is_res)
   nw <- max(nchar(n), 4)
   num <- function(x) if (is.na(x)) strrep(" ", nw) else formatC(x, width = nw, format = "d")
   # line numbers (and their separating space) sit in .lnum spans so the
@@ -687,9 +689,11 @@ render_cdna <- function(m, width = 60) {
                      spans(cds_chars, cds_cls), strrep(" ", padn), ln_r(max(ci) - m$cds_s + 1))
       # amino-acid letters on this line form a "p" (protein) container so
       # variant / selection highlights can be drawn on the translation too
-      pep_txt <- html_escape(paste(pep_chars, collapse = ""))
-      k_here <- codon[idx][in_cds[idx] & off == 1] + 1
-      n_let <- sum(grepl("[A-Za-z*]", pep_chars))
+      ## OLD ## pep_txt <- html_escape(paste(pep_chars, collapse = ""))
+      ## OLD ## k_here <- codon[idx][in_cds[idx] & off == 1] + 1
+      ## OLD ## n_let <- sum(grepl("[A-Za-z*]", pep_chars))
+      l_pep <- if (in_cds[s] && any(is_res[idx])) codon[s] + 1 else NA
+      r_pep <- if (n_res[e] > 0) n_res[e] else NA
       # line numbers = first / last residue whose letter is on this line (a letter
       # sits on its codon's middle base, so it can be on the line before/after the
       # codon's first/last base)
