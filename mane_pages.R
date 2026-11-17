@@ -1210,16 +1210,35 @@ function lettersBefore(cont,node,off){var a=letters(cont),r=document.createRange
   try{r.setStart(node,off);r.collapse(true)}catch(e){return a.length}
   for(var k=0;k<a.length;k++)if(r.comparePoint(a[k][0],a[k][1])>=0)return k;
   return a.length}
-function boundary(node,off,isStart,view){
+/* base at a selection boundary: the first base at/after a start, the last base
+   before an end, only in boxes of `space` if given. The boundary can be an element
+   (a cell, the table, the whole section) when the mouse is let go past the end of a
+   line, so boxes are compared with the boundary point itself, not its node. */
+function boundary(node,off,isStart,view,space){
   var el=node.nodeType===3?node.parentElement:node,cont=el&&el.closest(".bases");
-  if(cont){var k=lettersBefore(cont,node,off)-(isStart?0:1);k=Math.max(0,Math.min(k,+cont.dataset.n-1));
+  if(cont&&(!space||cont.dataset.space===space)){var k=lettersBefore(cont,node,off)-(isStart?0:1);k=Math.max(0,Math.min(k,+cont.dataset.n-1));
     return{space:cont.dataset.space,pos:+cont.dataset.p+k}}
-  var list=$$(".bases",view),i;
-  if(isStart){for(i=0;i<list.length;i++)if(node.compareDocumentPosition(list[i])&Node.DOCUMENT_POSITION_FOLLOWING)
-    return{space:list[i].dataset.space,pos:+list[i].dataset.p}}
-  else{for(i=list.length-1;i>=0;i--)if(node.compareDocumentPosition(list[i])&Node.DOCUMENT_POSITION_PRECEDING)
-    return{space:list[i].dataset.space,pos:+list[i].dataset.p+ +list[i].dataset.n-1}}
+  var P=document.createRange();try{P.setStart(node,off);P.collapse(true)}catch(e){return null}
+  var list=$$(".bases",view).filter(function(c){return !space||c.dataset.space===space}),i,c,k;
+  if(isStart){for(i=0;i<list.length;i++){c=list[i];
+      if(P.comparePoint(c,c.childNodes.length)<0)continue;          // box ends before the point
+      k=lettersBefore(c,node,off);if(k<+c.dataset.n)return{space:c.dataset.space,pos:+c.dataset.p+k}}}
+  else{for(i=list.length-1;i>=0;i--){c=list[i];
+      if(P.comparePoint(c,0)>0)continue;                            // box starts after the point
+      k=lettersBefore(c,node,off);if(k>0)return{space:c.dataset.space,pos:+c.dataset.p+k-1}}}
   return null}
+/* base on the text line at height y next to x: the last one at or left of x
+   (leftOf) or the first one at or right of x; if x is past the line's end, the
+   line's last base (leftOf) / the next line's first; null if y is on no line */
+function baseNear(x,y,view,space,leftOf){var hit=null,edge=null;
+  $$(".bases",view).forEach(function(c){if(c.dataset.space!==space)return;
+    var cb=c.getBoundingClientRect();if(y<cb.top-1||y>cb.bottom+1)return;
+    var a=letters(c),on=false,k,b,r,P=function(k){return{space:space,pos:+c.dataset.p+k}};
+    for(k=0;k<a.length;k++){r=document.createRange();r.setStart(a[k][0],a[k][1]);r.setEnd(a[k][0],a[k][1]+1);b=r.getBoundingClientRect();
+      if(y<b.top-1||y>b.bottom+1){if(on){if(!leftOf&&!hit&&!edge)edge=P(k);break}continue}
+      if(!on){on=true;if(leftOf&&!hit&&!edge&&k>0)edge=P(k-1)}
+      if(leftOf?b.left<=x:(!hit&&b.right>=x))hit=P(k)}});
+  return hit||edge}
 
 /* ---------- selection state ---------- */
 var anchor=null,sel=null,selVar=null;     // selVar: "highlighted variant(s)" - set by clicking a coloured base
@@ -1371,13 +1390,26 @@ function commit(space,a,b){sel=region(space,a,b);updateBar()}
 document.addEventListener("mousedown",function(e){
   if(e.shiftKey&&anchor&&e.target.closest&&e.target.closest(".bases"))e.preventDefault()});
 document.addEventListener("mouseup",function(e){
-  if(e.button!==0||bar.contains(e.target))return;
-  var view=e.target.closest&&e.target.closest("section.view");if(!view)return;
-  var ns=window.getSelection();
-  if(ns&&!ns.isCollapsed&&ns.rangeCount&&view.contains(ns.anchorNode)){      // drag
-    var r=ns.getRangeAt(0),a=boundary(r.startContainer,r.startOffset,true,view),b=boundary(r.endContainer,r.endOffset,false,view);
-    if(a&&b&&a.space===b.space&&b.pos>=a.pos){ns.removeAllRanges();anchor={space:a.space,pos:a.pos};commit(a.space,a.pos,b.pos)}
+  if(e.button!==0)return;
+  // drag: judged by where the selection started, so letting go past the end of a
+  // line, in the margin or over the drawer still counts
+  var ns=window.getSelection(),an=ns&&ns.rangeCount&&!ns.isCollapsed?ns.anchorNode:null;
+  var dv=an&&(an.nodeType===3?an.parentElement:an);dv=dv&&dv.closest&&dv.closest("section.view");
+  if(dv){
+    var r=ns.getRangeAt(0),a=boundary(r.startContainer,r.startOffset,true,dv),b=a&&boundary(r.endContainer,r.endOffset,false,dv,a.space);
+    // let go outside the sequence (past a line's end, in the margin): browsers may stretch
+    // the selection to the whole section, so take the end the mouse moved from the mouse
+    if(a){var inSeq=function(n){var el=n.nodeType===3?n.parentElement:n;el=el&&el.closest(".bases");return el&&el.dataset.space===a.space},
+        fwd=ns.focusNode===r.endContainer&&ns.focusOffset===r.endOffset,m;
+      if(fwd&&!inSeq(r.endContainer)){m=baseNear(e.clientX,e.clientY,dv,a.space,true);if(m&&m.pos>=a.pos)b=m}
+      else if(!fwd&&!inSeq(r.startContainer)){m=baseNear(e.clientX,e.clientY,dv,a.space,false);if(m&&b&&m.pos<=b.pos)a=m}}
+    // never leave a browser selection over the sequence: pressing inside one starts
+    // a text drag instead of a new selection, so the next try would do nothing
+    if($$(".bases",dv).some(function(c){return r.intersectsNode(c)}))ns.removeAllRanges();
+    if(a&&b&&b.pos>=a.pos){anchor={space:a.space,pos:a.pos};commit(a.space,a.pos,b.pos)}
     return}
+  if(bar.contains(e.target))return;
+  var view=e.target.closest&&e.target.closest("section.view");if(!view)return;
   var p=posAt(e.clientX,e.clientY);if(!p)return;
   if(e.shiftKey&&anchor&&anchor.space===p.space){commit(p.space,anchor.pos,p.pos)}
   else{
