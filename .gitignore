@@ -16,10 +16,12 @@
 *.tbi
 MANE.*.summary.txt
 hg19_gnomad_*.txt
+hg38_gnomad_*.txt
 humandb/
 
 # output
 mane_pages_hg19/
+mane_pages_hg38/
 
 # local settings
 my_config.R
