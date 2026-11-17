@@ -1385,7 +1385,8 @@ $("button.mark",bar).addEventListener("click",function(){
   updateBar()});
 
 /* function commit(space,a,b){sel=region(space,a,b);updateBar()} */
-function commit(space,a,b){if(currentView()==="protein")return;sel=region(space,a,b);updateBar()}
+/* function commit(space,a,b){if(currentView()==="protein")return;sel=region(space,a,b);updateBar()} */
+function commit(space,a,b){if(space==="p")return;sel=region(space,a,b);updateBar()}
 
 /* ---------- mouse handling ---------- */
 document.addEventListener("mousedown",function(e){
