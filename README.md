@@ -12,11 +12,13 @@ This tool generates **one interactive HTML page for each MANE Select and MANE Pl
 
 **NOTE** !!! On **hg19**, some MANE transcripts do not have an hg19 equivalent and are therefore not generated. On hg38 every MANE transcript gets a page.
 
+**NOTE** Genomic sequences has been heavily validated. Translation events that are non-canonical are not necessarily identical to Ensembl (e.g. selenocysteine, non-ATG start codons, etc...) the major goal of this project is to provide raw sequence gene transcript sequence to assist in primer design!
+
 MANE is only defined on GRCh38. Many diagnostic pipelines still run on hg19. For hg19, this tool takes NCBI's GRCh37 mapping of the MANE RefSeq transcripts, builds each transcript from the GRCh37 genome and labels it with its MANE Ensembl IDs. It then checks every built cDNA against MANE's own sequence, so you know which pages you can trust as they are. For hg38, it reads the MANE GTF directly, with no remapping.
 
 The pages are plain static HTML. You can open them from a shared drive, put them on an intranet share or host them on GitHub Pages.
 
-> **Status:** **hg19 / GRCh37** is tested. **hg38 / GRCh38** (`run_hg38.R`) is in **beta**: gene structures, sequences and translations have been checked on a 10-gene test set, but it has not yet had a full genome-wide run.
+> **Status:** **hg19 / GRCh37** is tested. **hg38 / GRCh38** (`run_hg38.R`) is in **beta**: gene structures, sequences and translations have been checked on a limited test set, but it has not yet had a full genome-wide run.
 
 ---
 
@@ -107,12 +109,13 @@ The MANE files come from the [NCBI MANE FTP](https://ftp.ncbi.nlm.nih.gov/refseq
 
 | # | File | Needed? | Source |
 |---|---|---|---|
-| 1 | `MANE.GRCh38.v1.5.summary.txt.gz` | **Required** | NCBI MANE FTP |
-| 2 | `MANE.GRCh38.v1.5.ensembl_rna.fna.gz` | Recommended (QC) | NCBI MANE FTP |
+| 1 | `MANE.GRCh38.v1.5.summary.txt.gz` | **Required** | [NCBI MANE FTP](https://ftp.ncbi.nlm.nih.gov/refseq/MANE/MANE_human/current/) |
+| 2 | `MANE.GRCh38.v1.5.ensembl_rna.fna.gz` | Recommended (QC) | [NCBI MANE FTP](https://ftp.ncbi.nlm.nih.gov/refseq/MANE/MANE_human/current/) |
 | 3 | NCBI GRCh37.p13 annotation, `*_genomic.gff.gz` | **Required** | [NCBI annotation release GCF_000001405.25-RS_2024_09](https://ftp.ncbi.nlm.nih.gov/genomes/refseq/vertebrate_mammalian/Homo_sapiens/annotation_releases/GCF_000001405.25-RS_2024_09/) |
 | 4 | GRCh37 genome FASTA | **Required** | [Ensembl GRCh37 FASTA](https://ftp.ensembl.org/pub/grch37/current/fasta/homo_sapiens/dna/) → `Homo_sapiens.GRCh37.dna.primary_assembly.fa.gz` |
 | 5 | gnomAD variants (text) | Optional | ANNOVAR `hg19_gnomad_genome` table (see below) |
 | 6 | Ensembl GRCh38 GTF | Optional | [Ensembl GTF](https://ftp.ensembl.org/pub/current_gtf/homo_sapiens/), for extra tags (basic, CCDS, APPRIS) |
+
 
 ### hg38 / GRCh38 (`run_hg38.R`)
 
