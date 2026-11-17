@@ -329,6 +329,23 @@ normalize_variants <- function(v) {
   }
   df$af <- suppressWarnings(as.numeric(df$af))
   df <- df[!is.na(df$pos) & !is.na(df$af), ]
+  # indels in one style: VCF style (CTT -> C, G -> GA at the base before) becomes
+  # ANNOVAR's "-" style (TT -> - at the first deleted base, - -> A at the base
+  # before the insert) by dropping the bases both alleles start with.
+  # variants_for_model() turns them back into VCF-style labels for the page.
+  k <- pmin(nchar(df$ref), nchar(df$alt))
+  pre <- df$ref != "-" & df$alt != "-" & nchar(df$ref) != nchar(df$alt) &
+    toupper(substr(df$ref, 1, k)) == toupper(substr(df$alt, 1, k))
+  if (any(pre)) {
+    del <- pre & nchar(df$ref) > nchar(df$alt)
+    df$pos[del] <- df$pos[del] + k[del]                     # deletion: first deleted base
+    df$pos[pre & !del] <- df$pos[pre & !del] + k[pre & !del] - 1L   # insertion: base before the insert
+    r <- substring(df$ref[pre], k[pre] + 1L); a <- substring(df$alt[pre], k[pre] + 1L)
+    df$ref[pre] <- ifelse(nzchar(r), r, "-"); df$alt[pre] <- ifelse(nzchar(a), a, "-")
+  }
+  # the same variant can now appear twice (ANNOVAR's gnomAD tables list many
+  # indels in both styles): keep it once
+  df <- df[!duplicated(paste(.chr_key(df$chrom), df$pos, toupper(df$ref), toupper(df$alt))), ]
   df$id[df$id %in% c(".", "")] <- NA
   df$key <- .chr_key(df$chrom)
   df <- df[order(df$key, df$pos), ]
